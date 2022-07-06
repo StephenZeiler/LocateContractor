@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
-          path: ./API-LocateContractor/build
+          path: ./API-LocateContractor/Controllers
 
   deploy:
     runs-on: windows-latest

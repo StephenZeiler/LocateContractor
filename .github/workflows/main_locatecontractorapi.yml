@@ -23,9 +23,7 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
-        run: 
-          cd ./API-LocateContractor
-          dotnet build --configuration Release
+        run: dotnet build --configuration Release
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/API-LocateContractor

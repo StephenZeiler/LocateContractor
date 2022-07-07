@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\stephen.zeiler\\Documents\\API-LocateContractor\\API-LocateContractor.csproj": {}
+    "C:\\Users\\stephen.zeiler\\Documents\\Project Repositories\\LocateContractor\\API-LocateContractor\\API-LocateContractor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\stephen.zeiler\\Documents\\API-LocateContractor\\API-LocateContractor.csproj": {
+    "C:\\Users\\stephen.zeiler\\Documents\\Project Repositories\\LocateContractor\\API-LocateContractor\\API-LocateContractor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\stephen.zeiler\\Documents\\API-LocateContractor\\API-LocateContractor.csproj",
+        "projectUniqueName": "C:\\Users\\stephen.zeiler\\Documents\\Project Repositories\\LocateContractor\\API-LocateContractor\\API-LocateContractor.csproj",
         "projectName": "API-LocateContractor",
-        "projectPath": "C:\\Users\\stephen.zeiler\\Documents\\API-LocateContractor\\API-LocateContractor.csproj",
+        "projectPath": "C:\\Users\\stephen.zeiler\\Documents\\Project Repositories\\LocateContractor\\API-LocateContractor\\API-LocateContractor.csproj",
         "packagesPath": "C:\\Users\\stephen.zeiler\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\stephen.zeiler\\Documents\\API-LocateContractor\\obj\\",
+        "outputPath": "C:\\Users\\stephen.zeiler\\Documents\\Project Repositories\\LocateContractor\\API-LocateContractor\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\stephen.zeiler\\AppData\\Roaming\\NuGet\\NuGet.Config",

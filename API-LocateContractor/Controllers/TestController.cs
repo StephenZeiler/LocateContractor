@@ -20,12 +20,18 @@ namespace Test_API
         }
 
 
-        [HttpGet]
-        public ActionResult<IEnumerable<Test>> Get()
-        {
-            return _testContext.Test.ToList();
-        }
+        // [HttpGet]
+        // public ActionResult<IEnumerable<Test>> Get()
+        // {
+        //     return _testContext.Test.ToList();
+        // }
 
+
+        [HttpGet]
+        public ActionResult<String> Get()
+        {
+            return "hi";
+        }
     }
 
 }

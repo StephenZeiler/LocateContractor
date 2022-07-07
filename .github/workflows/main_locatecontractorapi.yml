@@ -24,24 +24,27 @@ jobs:
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
+        working-directory: ./API-LocateContractor
+
 
       - name: dotnet publish
         run: 
-          cd ./API-LocateContractor
-          dotnet publish -c Release -o ./API-LocateContractor
+          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        working-directory: ./API-LocateContractor
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
-          path: ./API-LocateContractor
+          path: ${{env.DOTNET_ROOT}}/myapp
 
   deploy:
     runs-on: windows-latest
     needs: build
     environment:
       name: 'Production'
-      url: https://yellow-sea-0fa5a340f.1.azurestaticapps.net/
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2

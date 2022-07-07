@@ -10,17 +10,25 @@ namespace Test_API
 
     [ApiController]
     [Route("[controller]")]
-
     public class TestController : ControllerBase
     {
-        List<Test> list = new List<Test>() { new Test(0, "Stephen"), new Test(1, "Krescens"), new Test(2, "Andrew"), new Test(3, "David"), new Test(4, "Zac") };
+        private TestContext _testContext;
 
-        [HttpGet("{Id}")]
-        public IActionResult GetById(int id)
+        public TestController(TestContext context)
         {
-            return Ok(list.Where(list => list.Id == id));
+            _testContext = context;
         }
 
+        List<Test> list = new List<Test>() { new Test(0, "Stephen"), new Test(1, "Krescens"), new Test(2, "Andrew"), new Test(3, "David"), new Test(4, "Zac") };
+
+        [HttpGet]
+        public ActionResult<IEnumerable<Test>> Get()
+        {
+            return _testContext.Test.ToList();
+        }
     }
 
 }
+
+
+

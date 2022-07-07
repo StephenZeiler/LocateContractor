@@ -20,18 +20,31 @@ namespace Test_API
         }
 
 
-        // [HttpGet]
-        // public ActionResult<IEnumerable<Test>> Get()
-        // {
-        //     return _testContext.Test.ToList();
-        // }
-
-
         [HttpGet]
-        public ActionResult<String> Get()
+        public ActionResult<List<Test>> Get()
         {
-            return "hi";
+
+            try
+            {
+                var data = _testContext.Test.ToList();
+                return StatusCode(StatusCodes.Status200OK, data);
+
+            }
+
+
+            catch (Exception E)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError, E.Message);
+            }
         }
+
+
+        // [HttpGet]
+        // public ActionResult<String> Get()
+        // {
+        //     return "hi";
+        // }
     }
 
 }

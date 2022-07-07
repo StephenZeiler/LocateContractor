@@ -2,14 +2,16 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
 name: Build and deploy ASP.Net Core app to Azure Web App - LocateContractorAPI
-
+  
 on:
   push:
+
     branches:
       - main
   workflow_dispatch:
 
 jobs:
+
   build:
     runs-on: windows-latest
 
@@ -43,7 +45,7 @@ jobs:
     needs: build
     environment:
       name: 'Production'
-      url: "https://yellow-sea-0fa5a340f.1.azurestaticapps.net/"
+      url: https://yellow-sea-0fa5a340f.1.azurestaticapps.net
 
     steps:
       - name: Download artifact from build job

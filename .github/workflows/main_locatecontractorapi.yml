@@ -31,14 +31,14 @@ jobs:
 
       - name: dotnet publish
         run: 
-          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/API-LocateContractor
+          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
         working-directory: ./API-LocateContractor
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/API-LocateContractor
+          path: ${{env.DOTNET_ROOT}}/myapp
 
   deploy:
     runs-on: windows-latest

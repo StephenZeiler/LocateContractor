@@ -34,17 +34,9 @@ namespace Test_API
 
             catch (Exception E)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, E.Message);
             }
         }
-
-
-        // [HttpGet]
-        // public ActionResult<String> Get()
-        // {
-        //     return "hi";
-        // }
     }
 
 }

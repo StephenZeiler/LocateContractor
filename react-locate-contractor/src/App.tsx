@@ -10,28 +10,33 @@ import PersonalIcon from './NavBar/PersonalIcon';
 import BusinessIcon from './NavBar/BusinessIcon';
 import HomeIcon from './NavBar/HomeIcon';
 import LoginIcon from './NavBar/LoginIcon';
+import './SearchBar.css';
 
 
 function App() {
 
   return (
-    <BrowserRouter>
-      <div>
-        <HomeIcon></HomeIcon>
-        <LoginIcon></LoginIcon>
-        <PersonalIcon></PersonalIcon>
-        <BusinessIcon></BusinessIcon>
-      </div>
-      <switch>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/Business" element={<BusinessPage />} />
-          <Route path="/Personal" element={<PersonalPage />} />
-        </Routes>
-      </switch>
-    </BrowserRouter>
+    <div>
+      <BrowserRouter>
+        <div>
+          <HomeIcon></HomeIcon>
+          <LoginIcon></LoginIcon>
+          <PersonalIcon></PersonalIcon>
+          <BusinessIcon></BusinessIcon>
+        </div>
+        <switch>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/Business" element={<BusinessPage />} />
+            <Route path="/Personal" element={<PersonalPage />} />
+          </Routes>
+        </switch>
+      </BrowserRouter>
+    </div>
   );
 };
 
 export default App;
+
+

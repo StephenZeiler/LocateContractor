@@ -10,7 +10,7 @@ import PersonalIcon from './NavBar/PersonalIcon';
 import BusinessIcon from './NavBar/BusinessIcon';
 import HomeIcon from './NavBar/HomeIcon';
 import LoginIcon from './NavBar/LoginIcon';
-import './SearchBar.css';
+
 
 
 function App() {

@@ -2,6 +2,8 @@
   "name": "react-locate-contractor",
   "version": "0.1.0",
   "private": true,
+  "engines": { "node": ">=18.0.0"
+  },
   "dependencies": {
     "@okta/okta-auth-js": "6.0",
     "@okta/okta-react": "6.4",

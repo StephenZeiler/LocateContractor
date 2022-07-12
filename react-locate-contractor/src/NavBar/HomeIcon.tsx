@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, BrowserRouter as Router, Route, BrowserRouter, Routes, } from 'react-router-dom';
 import styled from 'styled-components';
 
-function HomeIcon(props) {
+function HomeIcon() {
 
     const PrimaryButton = styled.div`
     position: absolute;

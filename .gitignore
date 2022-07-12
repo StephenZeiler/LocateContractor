@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-/API-LocateContractor/bin\Debug\net6.0
+/API-LocateContractor/bin
 # testing
 /coverage
 

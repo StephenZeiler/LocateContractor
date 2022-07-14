@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link, BrowserRouter as Router, Route, BrowserRouter, Routes, } from 'react-router-dom';
+import { useNavigate, } from 'react-router-dom';
 import styled from 'styled-components';
 
 function BusinessIcon() {
@@ -11,7 +10,7 @@ function BusinessIcon() {
     left: 702px;
     top: 7px;
     `
-    const ButtonRectangle = styled.div`
+    const ButtonRectangle = styled.button`
     position: absolute;
     left: 0px;
     right: 0px;
@@ -38,12 +37,13 @@ function BusinessIcon() {
 
     color: #393E46;
     `
+    const navigate = useNavigate();
+    const handleBusiness = async () => navigate('/business');
+
     return (
         <PrimaryButton>
-            <ButtonRectangle>
-                <Link to="/business">
-                    Business
-                </Link>
+            <ButtonRectangle onClick={handleBusiness}>
+                Business
             </ButtonRectangle>
         </PrimaryButton>
 

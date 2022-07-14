@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/bin
 /.pnp
 .pnp.js
 /API-LocateContractor/bin
@@ -22,3 +23,18 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 node_modules
+bin
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+node_modules
+bower_components
+
+*.sublime*
+
+psd
+thumb
+sketch

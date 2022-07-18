@@ -7,6 +7,7 @@
 .pnp.js
 /API-LocateContractor/bin
 /Debug
+/react-locate-contractor/src/config.tsx
 # testing
 /coverage
 

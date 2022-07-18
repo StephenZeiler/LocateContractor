@@ -22,7 +22,7 @@ const PersonalPage = () => {
     if (!userInfo) {
         return (
             <div>
-                <p>Fetching user info ...</p>
+                <p>Uh oh, you are not logged in! To access you're personal account you must be logged in...</p>
             </div>
         );
     }

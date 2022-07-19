@@ -22,10 +22,12 @@ function BusinessPage() {
         } else {
             oktaAuth.getUser().then((info: any) => {
                 setUserInfo(info);
+                console.log({ userInfo })
             }).catch((err) => {
                 console.error(err);
             });
         }
+
     }, [authState, oktaAuth]); // Update if authState changes
 
     if (!userInfo) {
@@ -35,6 +37,7 @@ function BusinessPage() {
             </div>
         );
     }
+    console.log(userInfo.email)
 
     return (
         <div>

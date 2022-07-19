@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Test_API
+namespace Business
 {
     public class Startup
     {
@@ -28,7 +28,7 @@ namespace Test_API
         public void ConfigureServices(IServiceCollection services)
         {
             String connectionString = Configuration.GetConnectionString("WebApiDatabase");
-            services.AddDbContext<TestContext>(opt => opt.UseSqlServer(connectionString));
+            services.AddDbContext<BusinessContext>(opt => opt.UseSqlServer(connectionString));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

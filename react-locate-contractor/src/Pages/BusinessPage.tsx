@@ -1,7 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
-import Button from '@mui/material/Button';
-import { Typography, Card, CardContent, CardActions, Container } from '@mui/material';
+import { Typography, Card, CardContent, CardActions, Container, Button } from '@mui/material';
+type business = {
+    businessName: String,
+    specialty: String,
+    aboutBusiness: String,
+    serviceOffered: String,
+    hoursOperation: String,
+    yearsBusiness: String,
+    phone: String,
+    email: String,
+}
+
+
 function BusinessPage() {
     <h3 id="personal">Business</h3>
     const { authState, oktaAuth } = useOktaAuth();

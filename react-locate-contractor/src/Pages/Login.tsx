@@ -16,7 +16,7 @@ const Login = ({ config }: any) => {
         return <div>Loading ... </div>;
     }
 
-    console.log(config)
+
 
     return authState.isAuthenticated ?
         <Navigate to={{ pathname: '/' }} /> :

@@ -1,30 +1,25 @@
 import { useState, useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
 import { Typography, Card, CardContent, CardActions, Container, Button } from '@mui/material';
-type business = {
-    businessName: String,
-    specialty: String,
-    aboutBusiness: String,
-    serviceOffered: String,
-    hoursOperation: String,
-    yearsBusiness: String,
-    phone: String,
-    email: String,
-}
+import { business } from './BusinessCard';
+import BusinessCard from './BusinessCard';
 
 
 function BusinessPage() {
     <h3 id="personal">Business</h3>
     const { authState, oktaAuth } = useOktaAuth();
     const [userInfo, setUserInfo]: [userInfo: any, setUserInfo: any] = useState(null);
-    const businessName = "TODO: A Business Name";
-    const specialty = "TODO: a specialty"
-    const aboutBusiness = "TODO: A very good business";
-    const serviceOffered = "TODO: These are my services offered";
-    const hoursOperation = "TODO: Hours of operation";
-    const yearsBusiness = "TODO: A lot of years";
-    const phone = "TODO: 612-321-3211";
-    const email = "TODO: todo@gmail.com";
+
+    const userBusiness: business = {
+        name: "TODO: A Business Name",
+        specialty: "TODO: a specialty",
+        about: "TODO: A very good business",
+        services: "TODO: These are my services offered",
+        hoursOperation: "TODO: Hours of operation",
+        yearsBusiness: "TODO: A lot of years",
+        phone: "TODO: 612-321-3211",
+        email: "TODO: todo@gmail.com"
+    }
 
     useEffect(() => {
         if (!authState || !authState.isAuthenticated) {
@@ -54,7 +49,8 @@ function BusinessPage() {
                     Welcome, &nbsp;{userInfo.name}!
                 </Typography >
                 <Container>
-                    <Card variant="outlined" sx={{ maxWidth: 500, height: 140 }} >
+                    <BusinessCard title="Business Name:" body={userBusiness.name} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>
+                    {/* <Card variant="outlined" sx={{ maxWidth: 500, height: 140 }} >
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
                                 Business Name:
@@ -150,7 +146,7 @@ function BusinessPage() {
                         <CardActions sx={{ height: 360 }}>
                             <Button size="small">Edit</Button>
                         </CardActions>
-                    </Card>
+                    </Card> */}
                 </Container>
             </div>
         </div >

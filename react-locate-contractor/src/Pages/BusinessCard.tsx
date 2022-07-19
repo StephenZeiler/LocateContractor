@@ -3,18 +3,17 @@ import { useOktaAuth } from '@okta/okta-react';
 import { Typography, Card, CardContent, CardActions, Container, Button } from '@mui/material';
 import internal from 'stream';
 
-type business = {
-    businessName: String,
-    specialty: String,
-    aboutBusiness: String,
-    serviceOffered: String,
-    hoursOperation: String,
-    yearsBusiness: String,
-    phone: String,
-    email: String,
+export type business = {
+    name: string,
+    specialty: string,
+    about: string,
+    services: string,
+    hoursOperation: string,
+    yearsBusiness: string,
+    phone: string,
+    email: string,
 }
-function businessCard(title: string, body: string, cardWidth: number, cardHeight: number, actionHeight: number) {
-
+const BusinessCard: any = (title: string, body: string, cardWidth: number, cardHeight: number, actionHeight: number) => {
 
     return (
         <Card variant="outlined" sx={{ maxWidth: cardWidth, height: cardHeight }} >
@@ -32,3 +31,5 @@ function businessCard(title: string, body: string, cardWidth: number, cardHeight
         </Card>
     );
 }
+
+export default BusinessCard;

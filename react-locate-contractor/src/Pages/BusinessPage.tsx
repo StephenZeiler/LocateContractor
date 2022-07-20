@@ -4,6 +4,13 @@ import { Typography, Card, CardContent, CardActions, Container, Button } from '@
 import { business } from './BusinessCard';
 import BusinessCard from './BusinessCard';
 
+export const AuthMssg = (pageName: any) => {
+    return (
+        <div>
+            <p>Uh oh, you are not logged in! To access the {pageName.page} page you must be logged in...</p>
+        </div>
+    );
+}
 
 function BusinessPage() {
     <h3 id="personal">Business</h3>
@@ -36,9 +43,7 @@ function BusinessPage() {
 
     if (!userInfo) {
         return (
-            <div>
-                <p>Uh oh, you are not logged in! To access you're business account you must be logged in...</p>
-            </div>
+            <AuthMssg page="business"> </AuthMssg>
         );
     }
 

@@ -49,104 +49,13 @@ function BusinessPage() {
                     Welcome, &nbsp;{userInfo.name}!
                 </Typography >
                 <Container>
-                    <BusinessCard title="Business Name:" body={userBusiness.name} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>
-                    {/* <Card variant="outlined" sx={{ maxWidth: 500, height: 140 }} >
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Business Name:
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {businessName}
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Edit</Button>
-                        </CardActions>
-                    </Card>
-
-                    <Card variant="outlined" sx={{ maxWidth: 500, height: 140 }} >
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Specialty:
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {specialty}
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Edit</Button>
-                        </CardActions>
-                    </Card>
-                    <Card variant="outlined" sx={{ maxWidth: 500, height: 140 }} >
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Years in Business:
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {yearsBusiness}
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Edit</Button>
-                        </CardActions>
-                    </Card>
-                    <Card variant="outlined" sx={{ maxWidth: 500, height: 140 }} >
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Hours of Operation:
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {hoursOperation}
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Edit</Button>
-                        </CardActions>
-                    </Card>
-                    <Card variant="outlined" sx={{ maxWidth: 500, height: 160 }} >
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Contact Information:
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                Phone Number: {phone}
-
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                Email: {email}
-
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Edit</Button>
-                        </CardActions>
-                    </Card>
-                    <Card variant="outlined" sx={{ maxWidth: 500, height: 300 }} >
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Services:
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {serviceOffered}
-                            </Typography>
-                        </CardContent>
-                        <CardActions sx={{ height: 360 }}>
-                            <Button size="small">Edit</Button>
-                        </CardActions>
-                    </Card>
-                    <Card variant="outlined" sx={{ maxWidth: 500, height: 300 }} >
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                About:
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {aboutBusiness}
-                            </Typography>
-                        </CardContent>
-                        <CardActions sx={{ height: 360 }}>
-                            <Button size="small">Edit</Button>
-                        </CardActions>
-                    </Card> */}
+                    {userBusiness && userBusiness.name && <BusinessCard title="Business Name:" body={userBusiness.name} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="Specialty:" body={userBusiness.specialty} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="Years in Business:" body={userBusiness.yearsBusiness} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="Hours of Operation::" body={userBusiness.hoursOperation} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="Contact Information:" body={"Phone:" + userBusiness.phone + " " + "Email: " + userBusiness.email} cardWidth={500} cardHeight={160} actionHeight={0} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="Services:" body={userBusiness.services} cardWidth={500} cardHeight={300} actionHeight={360} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="About:" body={userBusiness.about} cardWidth={500} cardHeight={300} actionHeight={360} > </BusinessCard>}
                 </Container>
             </div>
         </div >

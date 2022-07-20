@@ -13,19 +13,22 @@ export type business = {
     phone: string,
     email: string,
 }
-const BusinessCard: any = (title: string, body: string, cardWidth: number, cardHeight: number, actionHeight: number) => {
+// const BusinessCard: any = (title: string, body: string, cardWidth: number, cardHeight: number, actionHeight: number) => {
+
+const BusinessCard = (props: any) => {
+
 
     return (
-        <Card variant="outlined" sx={{ maxWidth: cardWidth, height: cardHeight }} >
+        <Card variant="outlined" sx={{ maxWidth: props.cardWidth, height: props.cardHeight }} >
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    {title}
+                    {props.title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    {body}
+                    {props.body}
                 </Typography>
             </CardContent>
-            <CardActions sx={{ height: actionHeight }}>
+            <CardActions sx={{ height: props.actionHeight }}>
                 <Button size="small">Edit</Button>
             </CardActions>
         </Card>

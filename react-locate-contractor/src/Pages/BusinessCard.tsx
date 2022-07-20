@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useOktaAuth } from '@okta/okta-react';
-import { Typography, Card, CardContent, CardActions, Container, Button } from '@mui/material';
-import internal from 'stream';
+import { Typography, Card, CardContent, CardActions, Button } from '@mui/material';
+
 
 export type business = {
     name: string,
@@ -13,7 +11,6 @@ export type business = {
     phone: string,
     email: string,
 }
-// const BusinessCard: any = (title: string, body: string, cardWidth: number, cardHeight: number, actionHeight: number) => {
 
 const BusinessCard = (props: any) => {
 

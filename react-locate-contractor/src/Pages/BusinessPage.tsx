@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
-import { Typography, Card, CardContent, CardActions, Container, Button } from '@mui/material';
+import { Typography, Container } from '@mui/material';
 import { business } from './BusinessCard';
 import BusinessCard from './BusinessCard';
 

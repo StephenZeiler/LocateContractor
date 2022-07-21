@@ -1,19 +1,32 @@
 import { useState, useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
-import Button from '@mui/material/Button';
-import { Typography, Card, CardContent, CardActions, Container } from '@mui/material';
+import { Typography, Container } from '@mui/material';
+import { business } from './BusinessCard';
+import BusinessCard from './BusinessCard';
+
+export const AuthMssg = (pageName: any) => {
+    return (
+        <div>
+            <p>Uh oh, you are not logged in! To access the {pageName.page} page you must be logged in...</p>
+        </div>
+    );
+}
+
 function BusinessPage() {
     <h3 id="personal">Business</h3>
     const { authState, oktaAuth } = useOktaAuth();
     const [userInfo, setUserInfo]: [userInfo: any, setUserInfo: any] = useState(null);
-    const businessName = "TODO: A Business Name";
-    const specialty = "TODO: a specialty"
-    const aboutBusiness = "TODO: A very good business";
-    const serviceOffered = "TODO: These are my services offered";
-    const hoursOperation = "TODO: Hours of operation";
-    const yearsBusiness = "TODO: A lot of years";
-    const phone = "TODO: 612-321-3211";
-    const email = "TODO: todo@gmail.com";
+
+    const userBusiness: business = {
+        name: "TODO: A Business Name",
+        specialty: "TODO: a specialty",
+        about: "TODO: A very good business",
+        services: "TODO: These are my services offered",
+        hoursOperation: "TODO: Hours of operation",
+        yearsBusiness: "TODO: A lot of years",
+        phone: "TODO: 612-321-3211",
+        email: "TODO: todo@gmail.com"
+    }
 
     useEffect(() => {
         if (!authState || !authState.isAuthenticated) {
@@ -32,9 +45,7 @@ function BusinessPage() {
 
     if (!userInfo) {
         return (
-            <div>
-                <p>Uh oh, you are not logged in! To access you're business account you must be logged in...</p>
-            </div>
+            <AuthMssg page="business"> </AuthMssg>
         );
     }
     console.log(userInfo.email)
@@ -46,103 +57,14 @@ function BusinessPage() {
                     Welcome, &nbsp;{userInfo.name}!
                 </Typography >
                 <Container>
-                    <Card variant="outlined" sx={{ maxWidth: 500, height: 140 }} >
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Business Name:
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {businessName}
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Edit</Button>
-                        </CardActions>
-                    </Card>
+                    {userBusiness && userBusiness.name && <BusinessCard title="Business Name:" body={userBusiness.name} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="Specialty:" body={userBusiness.specialty} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="Years in Business:" body={userBusiness.yearsBusiness} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="Hours of Operation::" body={userBusiness.hoursOperation} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="Contact Information:" body={"Phone:" + userBusiness.phone + " " + "Email: " + userBusiness.email} cardWidth={500} cardHeight={160} actionHeight={0} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="Services:" body={userBusiness.services} cardWidth={500} cardHeight={300} actionHeight={360} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="About:" body={userBusiness.about} cardWidth={500} cardHeight={300} actionHeight={360} > </BusinessCard>}
 
-                    <Card variant="outlined" sx={{ maxWidth: 500, height: 140 }} >
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Specialty:
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {specialty}
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Edit</Button>
-                        </CardActions>
-                    </Card>
-                    <Card variant="outlined" sx={{ maxWidth: 500, height: 140 }} >
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Years in Business:
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {yearsBusiness}
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Edit</Button>
-                        </CardActions>
-                    </Card>
-                    <Card variant="outlined" sx={{ maxWidth: 500, height: 140 }} >
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Hours of Operation:
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {hoursOperation}
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Edit</Button>
-                        </CardActions>
-                    </Card>
-                    <Card variant="outlined" sx={{ maxWidth: 500, height: 160 }} >
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Contact Information:
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                Phone Number: {phone}
-
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                Email: {email}
-
-                            </Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Edit</Button>
-                        </CardActions>
-                    </Card>
-                    <Card variant="outlined" sx={{ maxWidth: 500, height: 300 }} >
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Services:
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {serviceOffered}
-                            </Typography>
-                        </CardContent>
-                        <CardActions sx={{ height: 360 }}>
-                            <Button size="small">Edit</Button>
-                        </CardActions>
-                    </Card>
-                    <Card variant="outlined" sx={{ maxWidth: 500, height: 300 }} >
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                About:
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                                {aboutBusiness}
-                            </Typography>
-                        </CardContent>
-                        <CardActions sx={{ height: 360 }}>
-                            <Button size="small">Edit</Button>
-                        </CardActions>
-                    </Card>
                 </Container>
             </div>
         </div >

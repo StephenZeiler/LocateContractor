@@ -7,6 +7,7 @@
 /.pnp
 .pnp.js
 /API-LocateContractor/obj/Debug
+/API-LocateContractor/obj/Debug/net6.0
 # testing
 /coverage
 
@@ -19,18 +20,15 @@
 .env.development.local
 .env.test.local
 .env.production.local
-
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-node_modules
 bin
 .DS_*
 *.log
 logs
 **/*.backup.*
 **/*.back.*
-
 node_modules
 bower_components
 

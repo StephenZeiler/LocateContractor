@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
-
+import { AuthMssg } from './BusinessPage';
 const PersonalPage = () => {
     <h3 id="personal">Personal</h3>
     const { authState, oktaAuth } = useOktaAuth();
@@ -21,9 +21,7 @@ const PersonalPage = () => {
 
     if (!userInfo) {
         return (
-            <div>
-                <p>Fetching user info ...</p>
-            </div>
+            <AuthMssg page="personal"> </AuthMssg>
         );
     }
 

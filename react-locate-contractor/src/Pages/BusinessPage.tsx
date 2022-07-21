@@ -1,10 +1,32 @@
 import { useState, useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
+import { Typography, Container } from '@mui/material';
+import { business } from './BusinessCard';
+import BusinessCard from './BusinessCard';
 
-const BusinessPage = () => {
+export const AuthMssg = (pageName: any) => {
+    return (
+        <div>
+            <p>Uh oh, you are not logged in! To access the {pageName.page} page you must be logged in...</p>
+        </div>
+    );
+}
+
+function BusinessPage() {
     <h3 id="personal">Business</h3>
     const { authState, oktaAuth } = useOktaAuth();
     const [userInfo, setUserInfo]: [userInfo: any, setUserInfo: any] = useState(null);
+
+    const userBusiness: business = {
+        name: "TODO: A Business Name",
+        specialty: "TODO: a specialty",
+        about: "TODO: A very good business",
+        services: "TODO: These are my services offered",
+        hoursOperation: "TODO: Hours of operation",
+        yearsBusiness: "TODO: A lot of years",
+        phone: "TODO: 612-321-3211",
+        email: "TODO: todo@gmail.com"
+    }
 
     useEffect(() => {
         if (!authState || !authState.isAuthenticated) {
@@ -21,21 +43,28 @@ const BusinessPage = () => {
 
     if (!userInfo) {
         return (
-            <div>
-                <p>Fetching user info ...</p>
-            </div>
+            <AuthMssg page="business"> </AuthMssg>
         );
     }
 
     return (
         <div>
             <div>
-                <p id="welcome">
+                <Typography variant="button" id="welcome">
                     Welcome, &nbsp;{userInfo.name}!
-                </p>
-                <p>You have successfully authenticated against your Okta org, and have been redirected back to your BUSINESS PAGE.</p>
+                </Typography >
+                <Container>
+                    {userBusiness && userBusiness.name && <BusinessCard title="Business Name:" body={userBusiness.name} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="Specialty:" body={userBusiness.specialty} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="Years in Business:" body={userBusiness.yearsBusiness} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="Hours of Operation::" body={userBusiness.hoursOperation} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="Contact Information:" body={"Phone:" + userBusiness.phone + " " + "Email: " + userBusiness.email} cardWidth={500} cardHeight={160} actionHeight={0} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="Services:" body={userBusiness.services} cardWidth={500} cardHeight={300} actionHeight={360} > </BusinessCard>}
+                    {userBusiness && userBusiness.name && <BusinessCard title="About:" body={userBusiness.about} cardWidth={500} cardHeight={300} actionHeight={360} > </BusinessCard>}
+
+                </Container>
             </div>
-        </div>
+        </div >
     );
 };
 

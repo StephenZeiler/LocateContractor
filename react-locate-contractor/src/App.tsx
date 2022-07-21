@@ -3,14 +3,17 @@ import BusinessPage from './Pages/BusinessPage';
 import PersonalPage from './Pages/PersonalPage';
 import './App.css';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import PersonalIcon from './NavBar/PersonalIcon';
-import BusinessIcon from './NavBar/BusinessIcon';
-import HomeIcon from './NavBar/HomeIcon';
-import LoginIcon from './NavBar/LoginIcon';
-import { LoginCallback, Security, SecureRoute } from '@okta/okta-react';
+import { PersonalIcon } from './NavBar/NavBar';
+import { BusinessIcon } from './NavBar/NavBar';
+import { HomeIcon } from './NavBar/NavBar';
+import { LoginIcon } from './NavBar/NavBar';
+import { LoginCallback, Security } from '@okta/okta-react';
 import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 import Login from './Pages/Login';
 import config from './config';
+import Container from '@mui/material/Container';
+
+
 
 
 
@@ -28,15 +31,14 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <Container >
       <header className="App-header">
-        <p>Locate a Contractor</p>
         <BrowserRouter>
-          <HomeIcon></HomeIcon>
-          <PersonalIcon></PersonalIcon>
-          <BusinessIcon></BusinessIcon>
           <Security oktaAuth={oktaAuth} onAuthRequired={customAuthHandler} restoreOriginalUri={restoreOriginalUri}>
-            <LoginIcon />
+            <HomeIcon></HomeIcon>
+            <PersonalIcon></PersonalIcon>
+            <BusinessIcon></BusinessIcon>
+            <LoginIcon></LoginIcon>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/Business" element={<BusinessPage />} />
@@ -47,7 +49,7 @@ const App = () => {
           </Security>
         </BrowserRouter>
       </header>
-    </div>
+    </Container >
   );
 };
 export default App;

@@ -38,25 +38,6 @@ namespace Business
             }
         }
 
-        // [HttpGet("{Id}")]
-        // public ActionResult<List<Business>> GetById(int id)
-        // {
-
-        //     try
-        //     {
-        //         List<Business> data = new List<Business>();
-        //         var dataId = _businessContext.Business.FirstOrDefault(t => t.Id == id);
-        //         data.Add(dataId);
-        //         return StatusCode(StatusCodes.Status200OK, data.ToList());
-        //     }
-
-
-        //     catch (Exception E)
-        //     {
-        //         return StatusCode(StatusCodes.Status500InternalServerError, E.Message);
-        //     }
-        // }
-
         [HttpPost]
         public ActionResult<List<Business>> Post([FromBody] Business values)
         {
@@ -93,22 +74,59 @@ namespace Business
             }
         }
 
-        [HttpPatch("{UserEmailId}")]
+
+
+        [HttpDelete("{UserEmail}")]
+        public ObjectResult Delete(string userEmail)
+        {
+            try
+            {
+
+                var business = _businessContext.Business.FirstOrDefault(t => t.UserEmailId == userEmail);
+                if (business != null)
+                {
+                    _businessContext.Business.Remove(business);
+                    _businessContext.SaveChanges();
+                }
+                return StatusCode(StatusCodes.Status200OK, business);
+            }
+            catch (Exception E)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, E.Message);
+            }
+        }
+
+
+        [HttpPut("{userEmail}")]
         public ActionResult<List<Business>> UpdateBusiness([FromBody] Business business)
         {
             List<Business> data = new List<Business>();
-
-            if (data != null)
+            try
             {
-                var businessPatch = _businessContext.Business.FirstOrDefault(t => t.UserEmailId == business.UserEmailId);
                 data.Add(business);
-                if (businessPatch != null)
+                if (data != null)
                 {
-
-                    businessPatch = business;
+                    var businessPut = _businessContext.Business.Where(x => x.UserEmailId == business.UserEmailId).FirstOrDefault();
+                    Console.WriteLine("email: " + business.UserEmailId);
+                    if (businessPut != null)
+                    {
+                        _businessContext.Remove(businessPut);
+                        _businessContext.Add(business);
+                        if (_businessContext.ChangeTracker.HasChanges())
+                        {
+                            _businessContext.SaveChanges();
+                            return StatusCode(StatusCodes.Status200OK, data);
+                        }
+                    }
                 }
+                return StatusCode(StatusCodes.Status304NotModified, data);
             }
-            return Ok(data);
+            catch (Exception E)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, E.Message);
+            }
+
+
         }
     }
 

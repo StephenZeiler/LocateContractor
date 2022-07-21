@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link, BrowserRouter as Router, Route, BrowserRouter, Routes, } from 'react-router-dom';
+import { useNavigate, } from 'react-router-dom';
 import styled from 'styled-components';
 
 function PersonalIcon() {
@@ -11,7 +10,7 @@ function PersonalIcon() {
     left: 569px;
     top: 7px;
     `
-    const ButtonRectangle = styled.div`
+    const ButtonRectangle = styled.button`
     position: absolute;
     left: 0px;
     right: 0px;
@@ -38,12 +37,12 @@ function PersonalIcon() {
     
     color: #393E46;
     `
+    const navigate = useNavigate();
+    const handlePersonal = async () => navigate('/personal');
     return (
         <PrimaryButton>
-            <ButtonRectangle>
-                <Link to="/personal">
-                    Personal
-                </Link>
+            <ButtonRectangle onClick={handlePersonal}>
+                Personal
             </ButtonRectangle>
         </PrimaryButton>
 

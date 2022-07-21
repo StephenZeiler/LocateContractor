@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link, BrowserRouter as Router, Route, BrowserRouter, Routes, } from 'react-router-dom';
+import { useNavigate, } from 'react-router-dom';
 import styled from 'styled-components';
 
 function HomeIcon() {
@@ -12,7 +11,7 @@ function HomeIcon() {
     top: 7px;
 
     `
-    const ButtonRectangle = styled.div`
+    const ButtonRectangle = styled.button`
     position: absolute;
     left: 0px;
     right: 0px;
@@ -38,12 +37,12 @@ function HomeIcon() {
     
     color: #393E46;
     `
+    const navigate = useNavigate();
+    const handleHome = async () => navigate('/');
     return (
         <PrimaryButton>
-            <ButtonRectangle>
-                <Link to="/">
-                    Home
-                </Link>
+            <ButtonRectangle onClick={handleHome}>
+                Home
             </ButtonRectangle>
         </PrimaryButton>
 

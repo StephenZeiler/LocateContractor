@@ -1,17 +1,15 @@
-import React from 'react';
-import { Link, BrowserRouter as Router, Route, BrowserRouter, Routes, } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useOktaAuth } from '@okta/okta-react';
 import styled from 'styled-components';
 
-function LoginIcon() {
-
-    const PrimaryButton = styled.div`
+const PrimaryButton = styled.div`
     position: absolute;
     width: 106px;
     height: 34px;
     left: 1297px;
     top: 7px;
     `
-    const ButtonRectangle = styled.div`
+const ButtonRectangle = styled.button`
     position: absolute;
     left: 0px;
     right: 0px;
@@ -21,7 +19,7 @@ function LoginIcon() {
     background: #FFD368;
     border-radius: 8px;
     `
-    const ButtonText = styled.div`
+const ButtonText = styled.div`
     position: absolute;
     left: 0px;
     right: 0px;
@@ -38,15 +36,27 @@ function LoginIcon() {
     
     color: #393E46;
     `
-    return (
-        <PrimaryButton>
-            <ButtonRectangle>
-                <Link to="/login">
-                    Login
-                </Link>
-            </ButtonRectangle>
-        </PrimaryButton>
+const Home = () => {
+    const { oktaAuth, authState } = useOktaAuth();
+    const navigate = useNavigate();
 
+    if (!authState) {
+        return <div>Loading ...</div>;
+    }
+
+    const handleLogin = async () => navigate('/login');
+
+    const handleLogout = async () => oktaAuth.signOut();
+
+    return (
+        <div>
+            {
+                authState.isAuthenticated
+                    ? <PrimaryButton>  <ButtonRectangle id="login-button" type="button" onClick={handleLogout}>Logout</ButtonRectangle ></PrimaryButton>
+                    : <PrimaryButton>  <ButtonRectangle id="login-button" type="button" onClick={handleLogin}>Login</ButtonRectangle></PrimaryButton>
+            }
+        </div>
     );
-}
-export default LoginIcon;
+};
+
+export default Home;

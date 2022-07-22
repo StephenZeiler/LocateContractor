@@ -8,6 +8,7 @@
 .pnp.js
 /API-LocateContractor/obj/Debug
 /API-LocateContractor/obj/Debug/net6.0
+/react-locate-contractor/src/config.tsx
 # testing
 /coverage
 

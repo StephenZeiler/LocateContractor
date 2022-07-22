@@ -2,6 +2,7 @@ import { Typography, Card, CardContent, CardActions, Button } from '@mui/materia
 
 
 export type business = {
+    userEmailId: string,
     name: string,
     specialty: string,
     about: string,

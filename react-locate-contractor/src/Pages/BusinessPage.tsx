@@ -3,6 +3,16 @@ import { useOktaAuth } from '@okta/okta-react';
 import { Typography, Container } from '@mui/material';
 import { business } from './BusinessCard';
 import BusinessCard from './BusinessCard';
+import { getBusiness } from '../Services/BusinessService';
+import GetBusinesData from '../Services/GetBusiness';
+import { get } from 'http';
+// var test = GetBusiness("patchtest");
+// console.log(test);
+const test2 = getBusiness("stephen.zeiler@neudesic.com").then((res) => { console.log(res.data) })
+
+
+
+
 
 export const AuthMssg = (pageName: any) => {
     return (
@@ -12,21 +22,23 @@ export const AuthMssg = (pageName: any) => {
     );
 }
 
+export const userBusiness: business = {
+    userEmailId: "TODO: userEmailId",
+    name: "TODO: A Business Name",
+    specialty: "TODO: a specialty",
+    about: "TODO: A very good business",
+    services: "TODO: These are my services offered",
+    hoursOperation: "TODO: Hours of operation",
+    yearsBusiness: "TODO: A lot of years",
+    phone: "TODO: 612-321-3211",
+    email: "TODO: todo@gmail.com"
+}
+
 function BusinessPage() {
     <h3 id="personal">Business</h3>
     const { authState, oktaAuth } = useOktaAuth();
     const [userInfo, setUserInfo]: [userInfo: any, setUserInfo: any] = useState(null);
 
-    const userBusiness: business = {
-        name: "TODO: A Business Name",
-        specialty: "TODO: a specialty",
-        about: "TODO: A very good business",
-        services: "TODO: These are my services offered",
-        hoursOperation: "TODO: Hours of operation",
-        yearsBusiness: "TODO: A lot of years",
-        phone: "TODO: 612-321-3211",
-        email: "TODO: todo@gmail.com"
-    }
 
     useEffect(() => {
         if (!authState || !authState.isAuthenticated) {
@@ -48,7 +60,8 @@ function BusinessPage() {
             <AuthMssg page="business"> </AuthMssg>
         );
     }
-    console.log(userInfo.email)
+
+    // if(user has a business name proceed){}
 
     return (
         <div>
@@ -69,6 +82,11 @@ function BusinessPage() {
             </div>
         </div >
     );
+
+    // else if( user does not have a business name send to business create page)
+    {
+
+    }
 };
 
 export default BusinessPage;

@@ -10,10 +10,6 @@ import { get } from 'http';
 // console.log(test);
 const test2 = getBusiness("stephen.zeiler@neudesic.com").then((res) => { console.log(res.data) })
 
-
-
-
-
 export const AuthMssg = (pageName: any) => {
     return (
         <div>

@@ -12,11 +12,6 @@ import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 import Login from './Pages/Login';
 import config from './config';
 import Container from '@mui/material/Container';
-import { useState } from 'react';
-
-
-
-
 
 const oktaAuth = new OktaAuth(config.oidc);
 

@@ -19,19 +19,14 @@ namespace Business
             _businessContext = context;
         }
 
-
         [HttpGet]
         public ActionResult<List<Business>> Get()
         {
-
             try
             {
                 var data = _businessContext.Business.ToList();
                 return StatusCode(StatusCodes.Status200OK, data);
-
             }
-
-
             catch (Exception E)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, E.Message);
@@ -44,10 +39,14 @@ namespace Business
 
             try
             {
-                _businessContext.Business.Add(values);
+                if (values != null)
+                {
+                    _businessContext.Business.Add(values);
 
-                _businessContext.SaveChanges();
-                return StatusCode(StatusCodes.Status200OK);
+                    _businessContext.SaveChanges();
+                    return StatusCode(StatusCodes.Status200OK);
+                }
+                return StatusCode(StatusCodes.Status304NotModified);
 
             }
 
@@ -63,9 +62,13 @@ namespace Business
             try
             {
                 List<Business> data = new List<Business>();
-                var dataId = _businessContext.Business.FirstOrDefault(t => t.UserEmailId == userEmail);
-                data.Add(dataId);
-                return StatusCode(StatusCodes.Status200OK, data.ToList());
+                if (userEmail != null)
+                {
+                    var dataId = _businessContext.Business.FirstOrDefault(t => t.UserEmailId == userEmail);
+                    data.Add(dataId);
+                    return StatusCode(StatusCodes.Status200OK, data.ToList());
+                }
+                return StatusCode(StatusCodes.Status404NotFound);
             }
 
             catch (Exception E)
@@ -87,8 +90,9 @@ namespace Business
                 {
                     _businessContext.Business.Remove(business);
                     _businessContext.SaveChanges();
+                    return StatusCode(StatusCodes.Status200OK, business);
                 }
-                return StatusCode(StatusCodes.Status200OK, business);
+                return StatusCode(StatusCodes.Status304NotModified, business);
             }
             catch (Exception E)
             {
@@ -107,7 +111,6 @@ namespace Business
                 if (data != null)
                 {
                     var businessPut = _businessContext.Business.Where(x => x.UserEmailId == business.UserEmailId).FirstOrDefault();
-                    Console.WriteLine("email: " + business.UserEmailId);
                     if (businessPut != null)
                     {
                         _businessContext.Remove(businessPut);
@@ -125,8 +128,6 @@ namespace Business
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, E.Message);
             }
-
-
         }
     }
 

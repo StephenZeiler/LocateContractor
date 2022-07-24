@@ -1,16 +1,15 @@
+import React from 'react';
 import { Typography, Card, CardContent, CardActions, Button } from '@mui/material';
-
 
 export type business = {
     userEmailId: string,
-    name: string,
+    businessName: string,
     specialty: string,
-    about: string,
-    services: string,
     hoursOperation: string,
-    yearsBusiness: string,
-    phone: string,
-    email: string,
+    emailContact: string,
+    phoneContact: string,
+    services: string,
+    about: string,
 }
 
 const BusinessCard = (props: any) => {

@@ -13,10 +13,6 @@ import Login from './Pages/Login';
 import config from './config';
 import Container from '@mui/material/Container';
 
-
-
-
-
 const oktaAuth = new OktaAuth(config.oidc);
 
 const App = () => {
@@ -29,6 +25,7 @@ const App = () => {
   const restoreOriginalUri = async (_oktaAuth: any, originalUri: any) => {
     history.replace(toRelativeUrl(originalUri || '', window.location.origin));
   };
+
 
   return (
     <Container >

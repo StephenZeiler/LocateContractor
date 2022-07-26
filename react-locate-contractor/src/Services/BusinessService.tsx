@@ -4,12 +4,7 @@ import { business } from "../Pages/BusinessCard";
 import { Business } from "@mui/icons-material";
 
 export const getBusiness = async (searchString: string) => {
-<<<<<<< HEAD
-    console.log("Hello")
-    return await (await axios.get(`http://localhost:5149/Business/email/${searchString}`))
-=======
     return await (await axios.get(`https://locatecontractorapi.azurewebsites.net/Business/email/${searchString}`));
->>>>>>> main
 }
 export const postBusiness = async (userBusiness: business) => {
     // Simple POST request with a JSON body using fetch
@@ -34,13 +29,7 @@ export const deleteBusiness = async (searchString: string) => {
     return await (await axios.delete(`https://locatecontractorapi.azurewebsites.net/Business/${searchString}`));
 }
 export const patchBusiness = async (searchString: string) => {
-<<<<<<< HEAD
-    return await (await axios.put(`http://localhost:5149/Business/${searchString}`));
-}
-=======
+
     return await (await axios.put(`https://locatecontractorapi.azurewebsites.net/Business/${searchString}`));
 }
 
-
-
->>>>>>> main

@@ -12,8 +12,7 @@ import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 import Login from './Pages/Login';
 import config from './config';
 import Container from '@mui/material/Container';
-
-
+import ButtonAppBar from './NavBar/NavBar';
 
 
 
@@ -35,10 +34,11 @@ const App = () => {
       <header className="App-header">
         <BrowserRouter>
           <Security oktaAuth={oktaAuth} onAuthRequired={customAuthHandler} restoreOriginalUri={restoreOriginalUri}>
-            <HomeIcon></HomeIcon>
+            <ButtonAppBar></ButtonAppBar>
+            {/* <HomeIcon></HomeIcon>
             <PersonalIcon></PersonalIcon>
             <BusinessIcon></BusinessIcon>
-            <LoginIcon></LoginIcon>
+            <LoginIcon></LoginIcon> */}
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/Business" element={<BusinessPage />} />

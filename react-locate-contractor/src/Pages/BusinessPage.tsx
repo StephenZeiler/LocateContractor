@@ -6,15 +6,15 @@ import BusinessCard from './BusinessCard';
 import CreateBusiness from './CreateBusiness';
 import { getBusiness } from '../Services/BusinessService';
 import { Business } from '@mui/icons-material';
+import GetBusinessData from '../Services/GetBusiness';
 
 
-async function UseBusinessName() {
-    const result = await getBusiness("TEST1");
-    console.log(result.data)
-    return result.data;
-}
+// async function UseBusinessName() {
+// const result = await getBusiness("TEST1");
+//     return result.data;
+// }
 
-const businessData = await UseBusinessName();
+// const userBusiness = await UseBusinessName();
 
 
 // async function UseBusinessName(email: string) {
@@ -47,7 +47,7 @@ export const AuthMssg = (pageName: any) => {
 
 const hasBusiness: boolean = false;
 
-function BusinessPage(business: business) {
+function BusinessPage() {
     < h3 id="personal" > Business </h3 >
     const { authState, oktaAuth } = useOktaAuth();
     const [userInfo, setUserInfo]: [userInfo: any, setUserInfo: any] = useState(null);
@@ -79,7 +79,6 @@ function BusinessPage(business: business) {
     }
 
     else { //navigate to business page and display user's business data
-
         return (
             <div>
                 <div>
@@ -87,6 +86,7 @@ function BusinessPage(business: business) {
                         Welcome, &nbsp;{userInfo.name}!
                     </Typography >
                     <Container>
+                        <GetBusinessData searchString="TEST1" />
                         {/* {userBusiness && (userBusiness).businessName && <BusinessCard title="Business Name:" body={(userBusiness).businessName} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
                         {userBusiness && (userBusiness).businessName && <BusinessCard title="Specialty:" body={(userBusiness).specialty} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
                         {userBusiness && (userBusiness).businessName && <BusinessCard title="Hours of Operation::" body={(userBusiness).hoursOperation} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}

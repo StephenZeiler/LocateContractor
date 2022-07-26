@@ -4,6 +4,7 @@ import { business } from "../Pages/BusinessCard";
 import { Business } from "@mui/icons-material";
 
 export const getBusiness = async (searchString: string) => {
+    console.log("Hello")
     return await (await axios.get(`http://localhost:5149/Business/email/${searchString}`))
 }
 

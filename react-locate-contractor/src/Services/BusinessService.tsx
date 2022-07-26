@@ -7,7 +7,6 @@ export const getBusiness = async (searchString: string) => {
     console.log("Hello")
     return await (await axios.get(`http://localhost:5149/Business/email/${searchString}`))
 }
-
 export const postBusiness = async (userBusiness: business) => {
     // Simple POST request with a JSON body using fetch
     const requestOptions = {
@@ -27,14 +26,9 @@ export const postBusiness = async (userBusiness: business) => {
     fetch(`http://localhost:5149/Business/`, requestOptions)
         .then(res => res.json())
 }
-
 export const deleteBusiness = async (searchString: string) => {
     return await (await axios.delete(`http://localhost:5149/Business/${searchString}`));
 }
-
 export const patchBusiness = async (searchString: string) => {
     return await (await axios.put(`http://localhost:5149/Business/${searchString}`));
 }
-
-
-

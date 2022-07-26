@@ -5,13 +5,14 @@ import { getBusiness } from "./BusinessService"
 import BusinessCard from "../Pages/BusinessCard"
 import CreateBusiness from "../Pages/CreateBusiness";
 function GetBusinessData(searchString: any): JSX.Element {
-    const errorMsg = "ERROR: Can not locate " + { searchString };
     const [businessData, setBusinessData] = useState<business>()
     useEffect(() => {
-        getBusiness(searchString.email)
+        getBusiness(searchString.searchString)
             .then((res) => {
-                const business = res.data[0]
-                business && setBusinessData(business)
+                if (res && res.data) {
+                    const business = res.data[0]
+                    business && setBusinessData(business)
+                }
             })
     }, [getBusiness])
     if (businessData && (businessData).businessName.length > 0) {

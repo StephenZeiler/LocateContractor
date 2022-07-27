@@ -18,17 +18,6 @@ const userBusiness: business = {
     emailContact: ""
 }
 function EditBusinessData(props: { businessData: business }) {
-    // const [businessData, setBusinessData] = useState<business>()
-    // useEffect(() => {
-    //     // console.log(userInfo.email)
-    //     getBusiness("stephen.zeiler@neudesic.com")
-    //         .then((res) => {
-    //             if (res && res.data) {
-    //                 const business = res.data[0]
-    //                 business && setBusinessData(business)
-    //             }
-    //         })
-    // }, [getBusiness])
     const [nameValue, setNameValue] = useState('')
     const [specialtyValue, setSpecialtyValue] = useState('')
     const [nameError, setNameError] = useState(false)
@@ -56,7 +45,6 @@ function EditBusinessData(props: { businessData: business }) {
         }
     }
     if (props.businessData) {
-        console.log(typeof props.businessData.about)
         return (
             <div>
                 <form noValidate autoComplete='off' onSubmit={handleSubmit}>
@@ -103,3 +91,5 @@ function EditBusinessData(props: { businessData: business }) {
 }
 
 export default EditBusinessData
+
+

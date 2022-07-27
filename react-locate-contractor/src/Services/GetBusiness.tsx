@@ -12,9 +12,6 @@ function GetBusinessData(searchString: any): JSX.Element {
     const [editMode, setEditMode] = useState(false)
     const [loadingMode, setLoadingMode] = useState(true)
     const [businessData, setBusinessData] = useState<business>()
-    const submitEdit = () => {
-        setEditMode(false);
-    }
     useEffect(() => {
         getBusiness(searchString.searchString)
             .then((res) => {

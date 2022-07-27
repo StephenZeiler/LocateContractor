@@ -31,7 +31,6 @@ function CreateBusiness(userInfo: any) {
             setNameError(true);
         }
         else {
-            console.log(userInfo.userInfo.searchString)
             userBusiness.userEmailId = userInfo.userInfo.searchString
             userBusiness.businessName = nameValue
             userBusiness.specialty = specialtyValue

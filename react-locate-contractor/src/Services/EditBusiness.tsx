@@ -78,7 +78,7 @@ function EditBusinessData(props: { businessData: business }) {
                     <TextField value={phoneValue} onChange={(e) => setPhoneValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" defaultValue={props.businessData.phoneContact}> </TextField>
                     <TextField value={emailValue} onChange={(e) => setEmailValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" defaultValue={props.businessData.emailContact}> </TextField>
                     <TextField value={hoursValue} onChange={(e) => setHoursValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" defaultValue={props.businessData.hoursOperation}> </TextField>
-                    <Button onClick={() => console.log('you clicked me')} type="submit"> Submit </Button>
+                    <Button onClick={() => console.log('you clicked me')} type="submit"> Save Changes </Button>
                 </form>
             </div>
         );

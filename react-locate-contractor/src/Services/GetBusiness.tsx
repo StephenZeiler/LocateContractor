@@ -29,7 +29,7 @@ function GetBusinessData(searchString: any): JSX.Element {
     }
     else {
         return (
-            <CreateBusiness></CreateBusiness>
+            <CreateBusiness userInfo={searchString}></CreateBusiness>
         );
     }
 }

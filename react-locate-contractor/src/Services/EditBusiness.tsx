@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import TextField from '@mui/material/TextField';
 import { Typography, NativeSelect, FormControl, InputLabel, Button } from '@mui/material';
 import { business } from "../Pages/BusinessCard";
-import { getBusiness, patchBusiness, postBusiness } from "../Services/BusinessService";
+import { getBusiness, putBusiness } from "../Services/BusinessService";
 import { useOktaAuth } from '@okta/okta-react';
 import { useOutletContext } from "react-router-dom";
+import { Status } from "@okta/okta-auth-js";
 
 
 const userBusiness: business = {
@@ -18,17 +19,19 @@ const userBusiness: business = {
     emailContact: ""
 }
 function EditBusinessData(props: { businessData: business }) {
-    const [nameValue, setNameValue] = useState('')
+    const [nameValue, setNameValue] = useState(props.businessData.businessName)
     const [specialtyValue, setSpecialtyValue] = useState('')
     const [nameError, setNameError] = useState(false)
-    const [servicesValue, setServicesValue] = useState('')
-    const [aboutValue, setAboutValue] = useState('')
-    const [phoneValue, setPhoneValue] = useState('')
-    const [emailValue, setEmailValue] = useState('')
-    const [hoursValue, setHoursValue] = useState('')
+    const [servicesValue, setServicesValue] = useState(props.businessData.services)
+    const [aboutValue, setAboutValue] = useState(props.businessData.about)
+    const [phoneValue, setPhoneValue] = useState(props.businessData.phoneContact)
+    const [emailValue, setEmailValue] = useState(props.businessData.emailContact)
+    const [hoursValue, setHoursValue] = useState(props.businessData.hoursOperation)
+    const [saveMessage, setSaveMessage] = useState('')
     const handleSubmit = (e: any) => {
         e.preventDefault()
         setNameError(false);
+        setSaveMessage('')
         if (nameValue == '') {
             setNameError(true);
         }
@@ -41,21 +44,30 @@ function EditBusinessData(props: { businessData: business }) {
             userBusiness.hoursOperation = hoursValue
             userBusiness.phoneContact = phoneValue
             userBusiness.emailContact = emailValue
-            patchBusiness(userBusiness.userEmailId, userBusiness);
+            putBusiness(userBusiness.userEmailId, userBusiness)
+                .then(res => {
+                    if (res.status >= 300) {
+                        setSaveMessage("ERROR: Your changes have not been saved!")
+                    }
+                    else {
+                        setSaveMessage("Your changes have been saved!")
+                    }
+                }
+                )
         }
     }
     if (props.businessData) {
         return (
             <div>
+                <div>{saveMessage}</div>
                 <form noValidate autoComplete='off' onSubmit={handleSubmit}>
                     <Typography variant="button" > Click in a field to begin edit. When you are finsihed hit submit.</Typography >
-                    <TextField required error={nameError} value={nameValue} onChange={(e) => setNameValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" defaultValue={props.businessData.businessName}>  </TextField>
+                    <TextField label="Business Name" required error={nameError} value={nameValue} onChange={(e) => setNameValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled">  </TextField>
                     <FormControl fullWidth>
                         <InputLabel variant="filled" htmlFor="uncontrolled-native">
                             Specialty
                         </InputLabel>
                         <NativeSelect
-                            defaultValue={props.businessData.specialty}
                             inputProps={{
                                 name: 'age',
                                 id: 'uncontrolled-native',
@@ -73,11 +85,11 @@ function EditBusinessData(props: { businessData: business }) {
                             <option value={'Masonry'}>Masonry</option>
                         </NativeSelect>
                     </FormControl>
-                    <TextField value={servicesValue} onChange={(e) => setServicesValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" defaultValue={props.businessData.services.toString}> </TextField>
-                    <TextField value={aboutValue} onChange={(e) => setAboutValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" defaultValue={props.businessData.about}> </TextField>
-                    <TextField value={phoneValue} onChange={(e) => setPhoneValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" defaultValue={props.businessData.phoneContact}> </TextField>
-                    <TextField value={emailValue} onChange={(e) => setEmailValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" defaultValue={props.businessData.emailContact}> </TextField>
-                    <TextField value={hoursValue} onChange={(e) => setHoursValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" defaultValue={props.businessData.hoursOperation}> </TextField>
+                    <TextField label="Services" value={servicesValue} onChange={(e) => setServicesValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" > </TextField>
+                    <TextField label="About" value={aboutValue} onChange={(e) => setAboutValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" > </TextField>
+                    <TextField label="Phone Number" value={phoneValue} onChange={(e) => setPhoneValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" > </TextField>
+                    <TextField label="Business Email" value={emailValue} onChange={(e) => setEmailValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" > </TextField>
+                    <TextField label="Hours of Operation" value={hoursValue} onChange={(e) => setHoursValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" > </TextField>
                     <Button onClick={() => console.log('you clicked me')} type="submit"> Save Changes </Button>
                 </form>
             </div>
@@ -85,7 +97,7 @@ function EditBusinessData(props: { businessData: business }) {
     }
     else {
         return (
-            <div> not working</div>
+            <div> Error Loading Page </div>
         )
     }
 }

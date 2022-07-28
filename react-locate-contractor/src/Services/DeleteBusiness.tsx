@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
-import { useConfirm } from 'material-ui-confirm';
+import { useConfirm, ConfirmProvider } from 'material-ui-confirm';
+import { Alert, Snackbar } from '@mui/material';
+import { business } from '../Pages/BusinessCard';
+import { deleteBusiness } from './BusinessService';
+import GetBusinessData from './GetBusiness';
 
-function DeleteBusinessData() {
-    const confirm = useConfirm();
 
-    const handleClick = () => {
-        confirm({ description: 'This action is permanent!' })
-            .then(() => { /* ... */ })
-            .catch(() => { /* ... */ });
-    };
-
+export function DeleteBusinessData(props: { businessData: string }) {
+    const [saveMessage, setSaveMessage] = useState('')
+    deleteBusiness(props.businessData)
+        .then(res => {
+            if (res.status >= 300) {
+                setSaveMessage("ERROR: Your changes have not been saved!")
+            }
+            else {
+                setSaveMessage("Your changes have been saved!")
+            }
+        }
+        )
     return (
-        <Button onClick={handleClick}>
-            Click
-        </Button>
-    );
-};
-export default DeleteBusinessData
+        <GetBusinessData searchString={props.businessData}>
+            <h1>{saveMessage} asdsadffffffff</h1>
+        </GetBusinessData>
+    )
+}

@@ -41,12 +41,7 @@ function BusinessPage() {
                 <Typography variant="button" id="welcome">
                     Welcome, &nbsp;{userInfo.name}!
                 </Typography >
-<<<<<<< HEAD
-                <Container>
-
-=======
                 <Container sx={{ mt: 10, mb: 2 }}>
->>>>>>> main
                     {userInfo && userInfo.email && <GetBusinessData searchString={userInfo.email} />}
                 </Container>
             </div>

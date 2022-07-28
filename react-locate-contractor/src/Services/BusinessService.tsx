@@ -28,8 +28,22 @@ export const postBusiness = async (userBusiness: business) => {
 export const deleteBusiness = async (searchString: string) => {
     return await (await axios.delete(`https://locatecontractorapi.azurewebsites.net/Business/${searchString}`));
 }
-export const patchBusiness = async (searchString: string) => {
+export const putBusiness = async (searchString: string, userBusiness: business) => {
+    const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            userEmailId: userBusiness.userEmailId,
+            businessName: userBusiness.businessName,
+            specialty: userBusiness.specialty,
+            hoursOperation: userBusiness.hoursOperation,
+            emailContact: userBusiness.emailContact,
+            phoneContact: userBusiness.phoneContact,
+            services: userBusiness.services,
+            about: userBusiness.about,
+        })
+    };
+    return await fetch(`https://locatecontractorapi.azurewebsites.net/Business/${searchString}`, requestOptions)
 
-    return await (await axios.put(`https://locatecontractorapi.azurewebsites.net/Business/${searchString}`));
 }
 

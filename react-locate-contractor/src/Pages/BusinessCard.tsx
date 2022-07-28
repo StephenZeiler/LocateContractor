@@ -26,7 +26,6 @@ const BusinessCard = (props: any) => {
                 </Typography>
             </CardContent>
             <CardActions sx={{ height: props.actionHeight }}>
-                <Button size="small">Edit</Button>
             </CardActions>
         </Card>
     );

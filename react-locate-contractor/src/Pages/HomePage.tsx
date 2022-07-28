@@ -1,6 +1,7 @@
 import './SearchBar.css';
 import TextField from '@mui/material/TextField';
 const HomePage = () => {
+    console.log(process.env)
     return (
         <div>
             <h1>Home</h1>

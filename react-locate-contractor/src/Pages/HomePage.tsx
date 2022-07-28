@@ -4,12 +4,10 @@ const HomePage = () => {
     return (
         <div>
             <h1>Home</h1>
-
             <TextField placeholder='Search for a business...' className="Search-Bar">
                 <p>SEARCH:</p>
                 <input />
             </TextField>
-
         </div>
     );
 }

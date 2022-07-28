@@ -22,8 +22,7 @@ export const postBusiness = async (userBusiness: business) => {
             about: userBusiness.about,
         })
     };
-    fetch(`https://locatecontractorapi.azurewebsites.net/Business/`, requestOptions)
-        .then(res => res.json())
+    return await fetch(`https://locatecontractorapi.azurewebsites.net/Business/`, requestOptions)
 }
 export const deleteBusiness = async (searchString: string) => {
     const requestOptions = {

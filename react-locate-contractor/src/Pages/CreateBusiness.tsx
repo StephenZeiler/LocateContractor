@@ -24,9 +24,11 @@ function CreateBusiness(userInfo: any) {
     const [phoneValue, setPhoneValue] = useState('')
     const [emailValue, setEmailValue] = useState('')
     const [hoursValue, setHoursValue] = useState('')
+    const [saveMessage, setSaveMessage] = useState('')
     const handleSubmit = (e: any) => {
         e.preventDefault()
         setNameError(false);
+        setSaveMessage('')
         if (nameValue == '') {
             setNameError(true);
         }
@@ -39,12 +41,22 @@ function CreateBusiness(userInfo: any) {
             userBusiness.hoursOperation = hoursValue
             userBusiness.phoneContact = phoneValue
             userBusiness.emailContact = emailValue
-            postBusiness(userBusiness);
+            postBusiness(userBusiness)
+                .then(res => {
+                    if (res.status >= 300) {
+                        setSaveMessage("ERROR: Create business failed!")
+                    }
+                    else {
+                        setSaveMessage("Your business has been created!")
+                    }
+                }
+                )
         }
     }
 
     return (
         <div>
+            <div>{saveMessage}</div>
             <form noValidate autoComplete='off' onSubmit={handleSubmit}>
                 <Typography variant="button" > Looks like you dont have a business yet...Lets create one!</Typography >
                 <TextField required error={nameError} value={nameValue} onChange={(e) => setNameValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" placeholder='Business name'>  </TextField>

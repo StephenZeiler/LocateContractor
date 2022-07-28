@@ -42,6 +42,7 @@ function BusinessPage() {
                     Welcome, &nbsp;{userInfo.name}!
                 </Typography >
                 <Container>
+
                     {userInfo && userInfo.email && <GetBusinessData searchString={userInfo.email} />}
                 </Container>
             </div>

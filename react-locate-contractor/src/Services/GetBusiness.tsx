@@ -4,6 +4,7 @@ import { business } from "../Pages/BusinessCard";
 import { getBusiness } from "./BusinessService"
 import BusinessCard from "../Pages/BusinessCard"
 import CreateBusiness from "../Pages/CreateBusiness";
+import DeleteBusinessData from "./DeleteBusiness";
 function GetBusinessData(searchString: any): JSX.Element {
     const [businessData, setBusinessData] = useState<business>()
     useEffect(() => {
@@ -18,6 +19,7 @@ function GetBusinessData(searchString: any): JSX.Element {
     if (businessData && (businessData).businessName.length > 0) {
         return (
             < div >
+                <DeleteBusinessData />
                 {businessData && (businessData).businessName && <BusinessCard title="Business Name:" body={(businessData).businessName} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
                 {businessData && (businessData).businessName && <BusinessCard title="Specialty:" body={(businessData).specialty} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
                 {businessData && (businessData).businessName && <BusinessCard title="Hours of Operation::" body={(businessData).hoursOperation} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}

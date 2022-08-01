@@ -22,8 +22,7 @@ function GetBusinessData(searchString: any): JSX.Element {
             })
     }, [])
     const handleEditBusiness = () => setEditMode(true);
-    const handleDeleteBusiness = () => setDeleteMode(true);
-    if (deleteMode) {
+    const handleDeleteBusiness = () => {
         setDeleteMode(false)
         deleteBusiness(searchString.searchString)
             .then((res) => {

@@ -92,7 +92,10 @@ namespace Business
                     _businessContext.SaveChanges();
                     return StatusCode(StatusCodes.Status200OK, business);
                 }
-                return StatusCode(StatusCodes.Status304NotModified, business);
+                else
+                {
+                    return StatusCode(StatusCodes.Status304NotModified, business);
+                }
             }
             catch (Exception E)
             {

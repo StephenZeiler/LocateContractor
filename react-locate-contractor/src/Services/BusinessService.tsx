@@ -29,7 +29,6 @@ export const deleteBusiness = async (searchString: string) => {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     };
-
     return await fetch(`https://locatecontractorapi.azurewebsites.net/Business/${searchString}`, requestOptions)
 }
 export const putBusiness = async (searchString: string, userBusiness: business) => {

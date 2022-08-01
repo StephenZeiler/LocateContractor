@@ -77,7 +77,21 @@ namespace Business
             }
         }
 
-
+        [HttpGet("search/{searchString}")]
+        public ActionResult<List<Business>> GetBySearch(string searchString)
+        {
+            var searchBusiness = from Business in _businessContext.Business
+                                 where (Business.Services.Contains(searchString))
+                                 || (Business.BusinessName.Contains(searchString))
+                                 || (Business.Specialty.Contains(searchString))
+                                 select Business;
+            List<Business> list = new List<Business>();
+            foreach (Business business in searchBusiness)
+            {
+                list.Add(business);
+            }
+            return list;
+        }
 
         [HttpDelete("{UserEmail}")]
         public ObjectResult Delete(string userEmail)
@@ -92,10 +106,7 @@ namespace Business
                     _businessContext.SaveChanges();
                     return StatusCode(StatusCodes.Status200OK, business);
                 }
-                else
-                {
-                    return StatusCode(StatusCodes.Status304NotModified, business);
-                }
+                return StatusCode(StatusCodes.Status404NotFound, business);
             }
             catch (Exception E)
             {

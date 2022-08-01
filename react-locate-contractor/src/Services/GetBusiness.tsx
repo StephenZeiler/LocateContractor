@@ -26,7 +26,6 @@ function GetBusinessData(searchString: any): JSX.Element {
         setDeleteMode(false)
         deleteBusiness(searchString.searchString)
             .then((res) => {
-                console.log(res.status)
                 if (res.status >= 300) {
                     setSaveMessage("ERROR: Business has not deleted")
                 }

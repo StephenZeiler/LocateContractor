@@ -77,6 +77,8 @@ namespace Business
             }
         }
 
+<<<<<<< HEAD
+=======
         [HttpGet("search/{searchString}")]
         public ActionResult<List<Business>> GetBySearch(string searchString)
         {
@@ -93,6 +95,7 @@ namespace Business
             return list;
         }
 
+>>>>>>> main
         [HttpDelete("{UserEmail}")]
         public ObjectResult Delete(string userEmail)
         {
@@ -106,7 +109,7 @@ namespace Business
                     _businessContext.SaveChanges();
                     return StatusCode(StatusCodes.Status200OK, business);
                 }
-                return StatusCode(StatusCodes.Status304NotModified, business);
+                return StatusCode(StatusCodes.Status404NotFound, business);
             }
             catch (Exception E)
             {

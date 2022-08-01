@@ -25,7 +25,11 @@ export const postBusiness = async (userBusiness: business) => {
     return await fetch(`https://locatecontractorapi.azurewebsites.net/Business/`, requestOptions)
 }
 export const deleteBusiness = async (searchString: string) => {
-    return await (await axios.delete(`https://locatecontractorapi.azurewebsites.net/Business/${searchString}`));
+    const requestOptions = {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+    };
+    return await fetch(`https://locatecontractorapi.azurewebsites.net/Business/${searchString}`, requestOptions)
 }
 export const putBusiness = async (searchString: string, userBusiness: business) => {
     const requestOptions = {

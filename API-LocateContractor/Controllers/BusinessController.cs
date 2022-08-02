@@ -94,11 +94,18 @@ namespace Business
                     {
                         list.Add(business);
                     }
-                    return StatusCode(StatusCodes.Status200OK, list);
+                    if (list.Count > 0)
+                    {
+                        return StatusCode(StatusCodes.Status200OK, list);
+                    }
+                    else
+                    {
+                        return StatusCode(StatusCodes.Status404NotFound);
+                    }
                 }
                 else
                 {
-                    return StatusCode(StatusCodes.Status404NotFound);
+                    return StatusCode(StatusCodes.Status400BadRequest);
                 }
             }
             catch (Exception E)

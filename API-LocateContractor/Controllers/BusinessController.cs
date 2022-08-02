@@ -77,8 +77,6 @@ namespace Business
             }
         }
 
-<<<<<<< HEAD
-=======
         [HttpGet("search/{searchString}")]
         public ActionResult<List<Business>> GetBySearch(string searchString)
         {
@@ -95,7 +93,6 @@ namespace Business
             return list;
         }
 
->>>>>>> main
         [HttpDelete("{UserEmail}")]
         public ObjectResult Delete(string userEmail)
         {

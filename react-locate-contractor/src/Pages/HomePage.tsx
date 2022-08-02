@@ -53,7 +53,7 @@ const HomePage = () => {
                     <p>Error Finding Data For: {searchString}</p>
                 </>
             ) : (
-                <div className="Beverage-Card-Container">
+                <div>
                     {businessData.map((business: business) => (
                         <SearchCard Business={business} />
                     ))}

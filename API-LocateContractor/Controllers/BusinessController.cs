@@ -80,17 +80,31 @@ namespace Business
         [HttpGet("search/{searchString}")]
         public ActionResult<List<Business>> GetBySearch(string searchString)
         {
-            var searchBusiness = from Business in _businessContext.Business
-                                 where (Business.Services.Contains(searchString))
-                                 || (Business.BusinessName.Contains(searchString))
-                                 || (Business.Specialty.Contains(searchString))
-                                 select Business;
-            List<Business> list = new List<Business>();
-            foreach (Business business in searchBusiness)
+            try
             {
-                list.Add(business);
+                if (searchString != null)
+                {
+                    var searchBusiness = from Business in _businessContext.Business
+                                         where (Business.Services.Contains(searchString))
+                                         || (Business.BusinessName.Contains(searchString))
+                                         || (Business.Specialty.Contains(searchString))
+                                         select Business;
+                    List<Business> list = new List<Business>();
+                    foreach (Business business in searchBusiness)
+                    {
+                        list.Add(business);
+                    }
+                    return StatusCode(StatusCodes.Status200OK, list);
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status404NotFound);
+                }
             }
-            return list;
+            catch (Exception E)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, E.Message);
+            }
         }
 
         [HttpDelete("{UserEmail}")]

@@ -13,6 +13,7 @@ import Login from './Pages/Login';
 import config from './config';
 import Container from '@mui/material/Container';
 import EditBusinessData from './Services/EditBusiness';
+import WriteReview from './Pages/WriteReview';
 
 const oktaAuth = new OktaAuth(config.oidc);
 
@@ -43,6 +44,7 @@ const App = () => {
               <Route path="/Personal" element={<PersonalPage />} />
               <Route path="/login" element={<Login config={config} />} />
               <Route path="/login/callback" element={<LoginCallback />} />
+              <Route path="/Review/:businessId" element={<WriteReview />} />
             </Routes>
           </Security>
         </BrowserRouter>

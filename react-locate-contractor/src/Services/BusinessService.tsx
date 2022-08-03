@@ -2,6 +2,7 @@ import React from "react";
 import axios from 'axios';
 import { business } from "../Pages/BusinessCard";
 import { Business } from "@mui/icons-material";
+import { review } from "../Pages/WriteReview";
 
 export const getBusiness = async (searchString: string) => {
     return await (await axios.get(`https://locatecontractorapi.azurewebsites.net/Business/email/${searchString}`));
@@ -51,5 +52,21 @@ export const putBusiness = async (searchString: string, userBusiness: business) 
     };
     return await fetch(`https://locatecontractorapi.azurewebsites.net/Business/${searchString}`, requestOptions)
 
+}
+
+export const postReview = async (Review: review) => {
+    // Simple POST request with  JSON body using fetch
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            userReview: Review.userReview,
+            name: Review.name,
+            userEmailId: Review.userEmailId,
+            rating: Review.rating,
+            businessEmail: Review.businessEmail
+        })
+    };
+    return await fetch(`https://locatecontractorapi.azurewebsites.net/Review/`, requestOptions)
 }
 

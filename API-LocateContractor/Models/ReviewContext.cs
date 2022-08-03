@@ -11,6 +11,10 @@ namespace Business
         }
 
         public DbSet<Review> Review { get; set; }
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Review>().HasKey(x => x.UserEmailId);
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

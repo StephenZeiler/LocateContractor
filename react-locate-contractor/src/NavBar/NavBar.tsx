@@ -3,9 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useOktaAuth } from '@okta/okta-react';
 import { Typography, Box, AppBar, Toolbar, Button, IconButton } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import LoginIcon from '@mui/icons-material/Login';
+import HomeIcon from '@mui/icons-material/Home';
+import LogoutIcon from '@mui/icons-material/Logout';
 
-
-export function LoginIcon() {
+export function LoginButton() {
     const { oktaAuth, authState } = useOktaAuth();
     const navigate = useNavigate();
 
@@ -19,30 +22,30 @@ export function LoginIcon() {
 
     return (
         authState.isAuthenticated
-            ? <Button variant="contained" sx={{ ml: 20 }} id="login-button" type="button" onClick={handleLogout}>Logout</Button>
-            : <Button variant="contained" sx={{ ml: 20 }} id="login-button" type="button" onClick={handleLogin}>Login</Button>
+            ? <Button variant="contained" sx={{ ml: 20 }} id="login-button" type="button" onClick={handleLogout}><LogoutIcon />Logout</Button>
+            : <Button variant="contained" sx={{ ml: 20 }} id="login-button" type="button" onClick={handleLogin}><LoginIcon />Login</Button>
     );
 };
 
-export function BusinessIcon() {
+export function BusinessButton() {
     const navBusiness = useNavigate();
     const handleBusiness = async () => navBusiness('/business');
     return (
-        <Button variant="contained" sx={{ ml: 20 }} onClick={handleBusiness}>Business</Button>
+        <Button variant="contained" sx={{ ml: 20 }} onClick={handleBusiness}><StorefrontIcon />Business</Button>
     );
 }
-export function HomeIcon() {
+export function HomeButton() {
     const navHome = useNavigate();
     const handleHome = async () => navHome('/');
     return (
-        <Button variant="contained" sx={{ ml: 15 }} onClick={handleHome}>Home</Button>
+        <Button variant="contained" sx={{ ml: 10 }} onClick={handleHome}><HomeIcon />Home</Button>
     );
 }
-export function PersonalIcon() {
+export function PersonalButton() {
     const navPersonal = useNavigate();
     const handlePersonal = async () => navPersonal('/personal');
     return (
-        <Button variant="contained" sx={{ ml: 20 }} onClick={handlePersonal}><PersonalIcon></PersonalIcon>Personal</Button>
+        <Button variant="contained" sx={{ ml: 20 }} onClick={handlePersonal}><PersonIcon />Personal</Button>
     );
 
 }
@@ -51,10 +54,10 @@ export default function ButtonAppBar() {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" >
                 <Toolbar>
-                    <HomeIcon />
-                    <PersonalIcon />
-                    <BusinessIcon />
-                    <LoginIcon />
+                    <HomeButton />
+                    <PersonalButton />
+                    <BusinessButton />
+                    <LoginButton />
                 </Toolbar>
             </AppBar>
         </Box>

@@ -12,9 +12,13 @@ import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 import Login from './Pages/Login';
 import config from './config';
 import Container from '@mui/material/Container';
+<<<<<<< HEAD
 import ButtonAppBar from './NavBar/NavBar';
 
 
+=======
+import EditBusinessData from './Services/EditBusiness';
+>>>>>>> main
 
 const oktaAuth = new OktaAuth(config.oidc);
 
@@ -26,8 +30,9 @@ const App = () => {
   };
 
   const restoreOriginalUri = async (_oktaAuth: any, originalUri: any) => {
-    history.replace(toRelativeUrl(originalUri || '', window.location.origin));
-  };
+    history = (toRelativeUrl(originalUri, window.location.origin));
+  }
+
 
   return (
     <Container >

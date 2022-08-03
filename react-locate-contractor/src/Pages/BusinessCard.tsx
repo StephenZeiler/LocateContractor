@@ -1,15 +1,15 @@
+import React from 'react';
 import { Typography, Card, CardContent, CardActions, Button } from '@mui/material';
 
-
 export type business = {
-    name: string,
+    userEmailId: string,
+    businessName: string,
     specialty: string,
-    about: string,
-    services: string,
     hoursOperation: string,
-    yearsBusiness: string,
-    phone: string,
-    email: string,
+    emailContact: string,
+    phoneContact: string,
+    services: string,
+    about: string,
 }
 
 const BusinessCard = (props: any) => {
@@ -26,7 +26,6 @@ const BusinessCard = (props: any) => {
                 </Typography>
             </CardContent>
             <CardActions sx={{ height: props.actionHeight }}>
-                <Button size="small">Edit</Button>
             </CardActions>
         </Card>
     );

@@ -95,7 +95,7 @@ function WriteReview() {
                         }}
                     />
                 </Box>
-                <Button onClick={() => console.log('you clicked me')} type="submit"> Submit </Button>
+                <Button type="submit"> Submit </Button>
             </form>
         </div>
     );

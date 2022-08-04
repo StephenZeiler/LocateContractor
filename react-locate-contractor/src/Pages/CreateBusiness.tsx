@@ -15,7 +15,8 @@ export const userBusiness: business = {
     emailContact: ""
 }
 
-function CreateBusiness(userInfo: any) {
+function CreateBusiness(props: { userInfo: any, setCreateMode: any, setCreateMessage: any }) {
+    const [redirect, setRedirect] = useState(false)
     const [nameValue, setNameValue] = useState('')
     const [specialtyValue, setSpecialtyValue] = useState('')
     const [nameError, setNameError] = useState(false)
@@ -33,7 +34,7 @@ function CreateBusiness(userInfo: any) {
             setNameError(true);
         }
         else {
-            userBusiness.userEmailId = userInfo.userInfo.searchString
+            userBusiness.userEmailId = props.userInfo
             userBusiness.businessName = nameValue
             userBusiness.specialty = specialtyValue
             userBusiness.about = aboutValue
@@ -47,7 +48,8 @@ function CreateBusiness(userInfo: any) {
                         setSaveMessage("ERROR: Create business failed!")
                     }
                     else {
-                        setSaveMessage("Your business has been created!")
+                        props.setCreateMode(false)
+                        props.setCreateMessage('Your business has been created!')
                     }
                 }
                 )
@@ -56,9 +58,10 @@ function CreateBusiness(userInfo: any) {
 
     return (
         <div>
-            <div>{saveMessage}</div>
+
             <form noValidate autoComplete='off' onSubmit={handleSubmit}>
                 <Typography variant="button" > Looks like you dont have a business yet...Lets create one!</Typography >
+                <p> {saveMessage} </p>
                 <TextField required error={nameError} value={nameValue} onChange={(e) => setNameValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" placeholder='Business name'>  </TextField>
                 <FormControl fullWidth>
                     <InputLabel variant="filled" htmlFor="uncontrolled-native">

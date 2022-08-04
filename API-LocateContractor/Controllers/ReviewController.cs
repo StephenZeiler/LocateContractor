@@ -29,6 +29,20 @@ namespace Business
                 return StatusCode(StatusCodes.Status500InternalServerError, E.Message);
             }
         }
+        [HttpGet("BusinessReview/{searchString}")]
+        public ActionResult<IEnumerable<Review>> GetByBusiness(string searchString)
+        {
+            IQueryable<Review> reviewQuery = from Review in _reviewContext.Review
+                                             where Review.BusinessEmail == searchString
+                                             select Review;
+            List<Review> list = new List<Review>();
+            foreach (Review review in reviewQuery)
+            {
+                list.Add(review);
+            }
+
+            return list;
+        }
 
         [HttpPost]
         public ActionResult<List<Review>> Post([FromBody] Review values)

@@ -69,4 +69,6 @@ export const postReview = async (Review: review) => {
     };
     return await fetch(`https://locatecontractorapi.azurewebsites.net/Review/`, requestOptions)
 }
-
+export const getBusinessReview = async (searchString: string) => {
+    return await (await axios.get(`http://localhost:5149/Review/BusinessReview/${searchString}`));
+}

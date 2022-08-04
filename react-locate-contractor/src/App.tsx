@@ -8,8 +8,19 @@ import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 import Login from './Pages/Login';
 import config from './config';
 import Container from '@mui/material/Container';
+<<<<<<< HEAD
+<<<<<<< HEAD
+import EditBusinessData from './Services/EditBusiness';
+import WriteReview from './Pages/WriteReview';
+=======
 import ButtonAppBar from './NavBar/NavBar';
 
+>>>>>>> main
+=======
+import EditBusinessData from './Services/EditBusiness';
+import WriteReview from './Pages/WriteReview';
+import ButtonAppBar from './NavBar/NavBar';
+>>>>>>> fabdfb2f335bc4d004fe81602a086c6dd8162597
 
 const oktaAuth = new OktaAuth(config.oidc);
 
@@ -37,6 +48,7 @@ const App = () => {
               <Route path="/Personal" element={<PersonalPage />} />
               <Route path="/login" element={<Login config={config} />} />
               <Route path="/login/callback" element={<LoginCallback />} />
+              <Route path="/Review/:businessId" element={<WriteReview />} />
             </Routes>
           </Security>
         </BrowserRouter>

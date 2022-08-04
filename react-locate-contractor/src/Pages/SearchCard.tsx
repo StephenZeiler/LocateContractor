@@ -7,7 +7,11 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Divider } from "@mui/material";
+import WriteReview from "./WriteReview";
+import { useNavigate } from "react-router-dom";
 export const SearchCard = (props: { Business: business }) => {
+    const navigate = useNavigate();
+    const handleReview = async () => navigate(`/Review/${props.Business.userEmailId}`);
     return (
         <React.Fragment>
             <CardContent>
@@ -31,7 +35,7 @@ export const SearchCard = (props: { Business: business }) => {
             </CardContent>
             <CardActions>
                 <Button size="small">See Reviews</Button>
-                <Button size="small">Write Review</Button>
+                {props && <Button onClick={handleReview} size="small">Write Review</Button>}
             </CardActions>
             <Divider variant="middle" />
         </React.Fragment>

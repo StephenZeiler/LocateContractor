@@ -16,8 +16,7 @@ namespace Business
         {
             modelBuilder.Entity<Business>().HasKey(x => x.UserEmailId);
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Review>().HasKey(x => x.UserEmailId);
-            base.OnModelCreating(modelBuilder);
+
         }
 
 

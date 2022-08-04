@@ -43,7 +43,7 @@ namespace Business
         });
             String connectionString = Configuration.GetConnectionString("WebApiDatabase");
             services.AddDbContext<BusinessContext>(opt => opt.UseSqlServer(connectionString));
-            services.AddDbContext<ReviewContext>(opt => opt.UseSqlServer(connectionString));
+            // services.AddDbContext<ReviewContext>(opt => opt.UseSqlServer(connectionString));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

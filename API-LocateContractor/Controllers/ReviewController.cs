@@ -10,8 +10,8 @@ namespace Business
     public class ReviewController : ControllerBase
     {
 
-        private ReviewContext _reviewContext;
-        public ReviewController(ReviewContext context)
+        private BusinessContext _reviewContext;
+        public ReviewController(BusinessContext context)
         {
             _reviewContext = context;
         }

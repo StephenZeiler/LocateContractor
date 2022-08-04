@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API_LocateContractor.Migrations
 {
-    [DbContext(typeof(ReviewContext))]
+    [DbContext(typeof(BusinessContext))]
     [Migration("20220802201432_Business-Reviews")]
     partial class BusinessReviews
     {

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API_LocateContractor.Migrations
 {
-    [DbContext(typeof(ReviewContext))]
+    [DbContext(typeof(BusinessContext))]
     partial class ReviewContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

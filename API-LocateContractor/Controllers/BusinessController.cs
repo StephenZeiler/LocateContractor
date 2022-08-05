@@ -77,6 +77,7 @@ namespace Business
             }
         }
 
+
         [HttpGet("search/{searchString}")]
         public ActionResult<List<Business>> GetBySearch(string searchString)
         {
@@ -113,7 +114,40 @@ namespace Business
                 return StatusCode(StatusCodes.Status500InternalServerError, E.Message);
             }
         }
-
+        [HttpGet("specialty/{searchString}")]
+        public ActionResult<List<Business>> GetBySpecialty(string searchString)
+        {
+            try
+            {
+                if (searchString != null)
+                {
+                    var searchBusiness = from Business in _businessContext.Business
+                                         where (Business.Specialty == (searchString))
+                                         select Business;
+                    List<Business> list = new List<Business>();
+                    foreach (Business business in searchBusiness)
+                    {
+                        list.Add(business);
+                    }
+                    if (list.Count > 0)
+                    {
+                        return StatusCode(StatusCodes.Status200OK, list);
+                    }
+                    else
+                    {
+                        return StatusCode(StatusCodes.Status404NotFound);
+                    }
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status400BadRequest);
+                }
+            }
+            catch (Exception E)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, E.Message);
+            }
+        }
         [HttpDelete("{UserEmail}")]
         public ObjectResult Delete(string userEmail)
         {

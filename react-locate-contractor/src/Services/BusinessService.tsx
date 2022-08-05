@@ -72,3 +72,6 @@ export const postReview = async (Review: review) => {
 export const getBusinessReview = async (searchString: string) => {
     return await (await axios.get(`http://localhost:5149/Review/BusinessReview/${searchString}`));
 }
+export const getMyReview = async (searchString: string) => {
+    return await (await axios.get(`http://localhost:5149/Review/MyReview/${searchString}`));
+}

@@ -1,5 +1,4 @@
 import './SearchBar.css';
-import TextField from '@mui/material/TextField';
 import { useEffect, useState } from 'react';
 import { getSpecialty, searchBusiness } from '../Services/BusinessService';
 import { business } from './BusinessCard';
@@ -12,7 +11,6 @@ import BoltIcon from '@mui/icons-material/Bolt';
 import CarpenterIcon from '@mui/icons-material/Carpenter';
 import GrassIcon from '@mui/icons-material/Grass';
 import HandymanIcon from '@mui/icons-material/Handyman';
-import { ConstructionOutlined } from '@mui/icons-material';
 const HomePage = () => {
     const [businessData, setBusinessData] = useState<business[]>([])
     const [searchString, setSearchString] = useState<string>("")

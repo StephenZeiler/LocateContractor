@@ -36,7 +36,6 @@ function PersonalPage() {
                 setErrorState(true)
             })
     }
-    console.log(reviewData)
 
     if (!userInfo) {
         return (

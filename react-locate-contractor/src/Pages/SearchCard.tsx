@@ -11,7 +11,6 @@ import WriteReview from "./WriteReview";
 import { useNavigate } from "react-router-dom";
 export const SearchCard = (props: { Business: business }) => {
     const navigate = useNavigate();
-    console.log(props.Business.userEmailId)
     const handleCreateReview = async () => navigate(`/Review/${props.Business.userEmailId}`);
     const handleAllReviews = async () => navigate(`/AllReview/${props.Business.userEmailId}`);
 

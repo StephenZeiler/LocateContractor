@@ -1,10 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
 import { AuthMssg } from './BusinessPage';
-const PersonalPage = () => {
-    <h3 id="personal">Personal</h3>
+import { getMyReview } from '../Services/BusinessService';
+import { review } from './WriteReview';
+import { MyReviewCard } from './MyReviewCard';
+function PersonalPage() {
     const { authState, oktaAuth } = useOktaAuth();
     const [userInfo, setUserInfo]: [userInfo: any, setUserInfo: any] = useState(null);
+    const [reviewData, setReviewData] = useState<any>()
+    const [searchString, setSearchString] = useState<string>("")
+    const [errorState, setErrorState] = useState<boolean>(false)
+    const [renderState, setRenderState] = useState<boolean>(true)
 
     useEffect(() => {
         if (!authState || !authState.isAuthenticated) {
@@ -15,9 +21,21 @@ const PersonalPage = () => {
                 setUserInfo(info);
             }).catch((err) => {
                 console.error(err);
-            });
+            })
         }
     }, [authState, oktaAuth]); // Update if authState changes
+
+    if (renderState) {
+        userInfo && getMyReview(userInfo.email)
+            .then((res) => {
+                const review = res.data
+                review && setReviewData(review)
+                setRenderState(false);
+            })
+            .catch(() => {
+                setErrorState(true)
+            })
+    }
 
     if (!userInfo) {
         return (
@@ -31,7 +49,12 @@ const PersonalPage = () => {
                 <p id="welcome">
                     Welcome, &nbsp;{userInfo.name}!
                 </p>
-                <p>You have successfully authenticated against your Okta org, and have been redirected back to your PERSONAL PAGE.</p>
+                My Reviews:
+                {
+                    reviewData && reviewData.map((Review: review) => (
+                        <MyReviewCard Review={Review} />
+                    ))
+                }
             </div>
         </div>
     );

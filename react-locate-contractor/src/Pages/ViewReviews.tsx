@@ -38,7 +38,7 @@ function ViewReview() {
     return (
         < div >
             <Typography variant="h5">
-                Customer reviews for {businessData.businessName}
+                Customer reviews for {businessData && businessData.businessName}
             </Typography>
             {
                 reviewData.map((Review: review) => (

@@ -12,7 +12,7 @@ export const searchBusiness = async (searchString: string) => {
     return await (await axios.get(`https://locatecontractorapi.azurewebsites.net/Business/search/${searchString}`));
 }
 export const getSpecialty = async (searchString: string) => {
-    return await (await axios.get(`http://localhost:5149/Business/specialty/${searchString}`));
+    return await (await axios.get(`https://locatecontractorapi.azurewebsites.net/Business/specialty/${searchString}`));
 }
 
 export const postBusiness = async (userBusiness: business) => {
@@ -75,5 +75,8 @@ export const postReview = async (Review: review) => {
     return await fetch(`https://locatecontractorapi.azurewebsites.net/Review/`, requestOptions)
 }
 export const getBusinessReview = async (searchString: string) => {
-    return await (await axios.get(`http://localhost:5149/Review/BusinessReview/${searchString}`));
+    return await (await axios.get(`https://locatecontractorapi.azurewebsites.net/Review/BusinessReview/${searchString}`));
+}
+export const getMyReview = async (searchString: string) => {
+    return await (await axios.get(`https://locatecontractorapi.azurewebsites.net/Review/MyReview/${searchString}`));
 }

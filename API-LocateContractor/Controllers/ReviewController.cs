@@ -44,6 +44,22 @@ namespace Business
             return list;
         }
 
+        [HttpGet("MyReview/{searchString}")]
+        public ActionResult<IEnumerable<Review>> GetByPersonal(string searchString)
+        {
+            IQueryable<Review> reviewQuery = from Review in _reviewContext.Review
+                                             where Review.UserEmailId == searchString
+                                             select Review;
+            List<Review> list = new List<Review>();
+            foreach (Review review in reviewQuery)
+            {
+                list.Add(review);
+            }
+
+            return list;
+        }
+
+
         [HttpPost]
         public ActionResult<List<Review>> Post([FromBody] Review values)
         {

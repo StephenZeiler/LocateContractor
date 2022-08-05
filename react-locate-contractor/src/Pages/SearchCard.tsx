@@ -11,7 +11,10 @@ import WriteReview from "./WriteReview";
 import { useNavigate } from "react-router-dom";
 export const SearchCard = (props: { Business: business }) => {
     const navigate = useNavigate();
-    const handleReview = async () => navigate(`/Review/${props.Business.userEmailId}`);
+    console.log(props.Business.userEmailId)
+    const handleCreateReview = async () => navigate(`/Review/${props.Business.userEmailId}`);
+    const handleAllReviews = async () => navigate(`/AllReview/${props.Business.userEmailId}`);
+
     return (
         <React.Fragment>
             <CardContent>
@@ -34,8 +37,8 @@ export const SearchCard = (props: { Business: business }) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">See Reviews</Button>
-                {props && <Button onClick={handleReview} size="small">Write Review</Button>}
+                {props && <Button onClick={handleAllReviews} size="small">See Reviews</Button>}
+                {props && <Button onClick={handleCreateReview} size="small">Write Review</Button>}
             </CardActions>
             <Divider variant="middle" />
         </React.Fragment>

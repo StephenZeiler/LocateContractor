@@ -5,7 +5,9 @@ import BusinessCard from "../Pages/BusinessCard"
 import CreateBusiness from "../Pages/CreateBusiness";
 import { Alert, Button } from "@mui/material";
 import EditBusinessData from "./EditBusiness";
+import { useNavigate } from "react-router-dom";
 function GetBusinessData(props: { searchString: any }): JSX.Element {
+    const navigate = useNavigate();
     const [editMode, setEditMode] = useState(false)
     const [deleteMode, setDeleteMode] = useState(false)
     const [createMode, setCreateMode] = useState(true)
@@ -60,6 +62,8 @@ function GetBusinessData(props: { searchString: any }): JSX.Element {
     }
     else if (businessData && (businessData).businessName.length > 0) {
 
+        const handleAllReviews = async () => navigate(`/AllReview/${businessData.userEmailId}`);
+
         return (
             < div >
                 {editMode ?
@@ -70,6 +74,7 @@ function GetBusinessData(props: { searchString: any }): JSX.Element {
                         {!createMode ? <Alert sx={{ width: 470 }} severity="success">{message} </Alert> : <p> </p>}
                         <Button size="small" onClick={handleEditBusiness}>Edit</Button>
                         <Button size="small" onClick={handleDeleteBusiness}>Delete</Button>
+                        <Button size="small" onClick={handleAllReviews}>Customer Reviews</Button>
                         {businessData && (businessData).businessName && <BusinessCard title="Business Name:" body={(businessData).businessName} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
                         {businessData && (businessData).businessName && <BusinessCard title="Specialty:" body={(businessData).specialty} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
                         {businessData && (businessData).businessName && <BusinessCard title="Hours of Operation::" body={(businessData).hoursOperation} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}

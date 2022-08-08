@@ -11,6 +11,7 @@ function ViewReview() {
     const [businessData, setBusinessData] = useState<any>()
     const [searchString, setSearchString] = useState<string>("")
     const [errorState, setErrorState] = useState<boolean>(false)
+    const [loadingMode, setLoadingMode] = useState(true)
 
     useEffect(() => {
         if (!errorState) {
@@ -28,27 +29,39 @@ function ViewReview() {
                 .then((res) => {
                     const business = res.data[0]
                     business && setBusinessData(business)
+                    setLoadingMode(false)
                 })
                 .catch(() => {
                     setErrorState(true)
                 })
         }
     }, [])
+    if (loadingMode) {
+        return (
+            <div>
 
-    return (
-        < div >
-            <Typography variant="h5">
-                Customer reviews for {businessData && businessData.businessName}
-            </Typography>
-            {
-                reviewData.map((Review: review) => (
-                    <ReviewCard Review={Review} />
-                ))
-            }
-            <Typography variant="subtitle2">
-                End of reviews
-            </Typography>
-        </div >
-    );
+            </div>
+
+        );
+    }
+    else {
+
+
+        return (
+            < div >
+                <Typography variant="h5">
+                    Customer reviews for {businessData && businessData.businessName}
+                </Typography>
+                {
+                    reviewData.map((Review: review) => (
+                        <ReviewCard Review={Review} />
+                    ))
+                }
+                <Typography variant="subtitle2">
+                    End of reviews
+                </Typography>
+            </div >
+        );
+    }
 }
 export default ViewReview;

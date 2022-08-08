@@ -3,7 +3,7 @@ import { business } from "../Pages/BusinessCard";
 import { deleteBusiness, getBusiness } from "./BusinessService"
 import BusinessCard from "../Pages/BusinessCard"
 import CreateBusiness from "../Pages/CreateBusiness";
-import { Alert, Button } from "@mui/material";
+import { Alert, Box, Button, LinearProgress, Typography } from "@mui/material";
 import EditBusinessData from "./EditBusiness";
 function GetBusinessData(props: { searchString: any }): JSX.Element {
     const [editMode, setEditMode] = useState(false)
@@ -55,7 +55,13 @@ function GetBusinessData(props: { searchString: any }): JSX.Element {
 
     if (loadingMode) {
         return (
-            <div>Loading...</div>
+            <div>
+
+                <Typography variant="h6">Loading...</Typography>
+                <Box sx={{ width: '100%' }}>
+                    <LinearProgress />
+                </Box>
+            </div>
         )
     }
     else if (businessData && (businessData).businessName.length > 0) {

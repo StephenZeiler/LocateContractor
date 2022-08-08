@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TextField from '@mui/material/TextField';
-import { Typography, NativeSelect, FormControl, InputLabel, Button } from '@mui/material';
+import { Typography, NativeSelect, FormControl, InputLabel, Button, Alert } from '@mui/material';
 import { business } from './BusinessCard';
 import { postBusiness } from "../Services/BusinessService";
 export var hasBusiness: boolean;
@@ -15,7 +15,7 @@ export const userBusiness: business = {
     emailContact: ""
 }
 
-function CreateBusiness(props: { userInfo: any, setCreateMode: any, setCreateMessage: any }) {
+function CreateBusiness(props: { userInfo: any, setCreateMode: any, setMessage: any, message: any }) {
     const [redirect, setRedirect] = useState(false)
     const [nameValue, setNameValue] = useState('')
     const [specialtyValue, setSpecialtyValue] = useState('')
@@ -49,7 +49,7 @@ function CreateBusiness(props: { userInfo: any, setCreateMode: any, setCreateMes
                     }
                     else {
                         props.setCreateMode(false)
-                        props.setCreateMessage('Your business has been created!')
+                        props.setMessage('Your business has been created!')
                     }
                 }
                 )
@@ -60,6 +60,8 @@ function CreateBusiness(props: { userInfo: any, setCreateMode: any, setCreateMes
         <div>
 
             <form noValidate autoComplete='off' onSubmit={handleSubmit}>
+                {props.message ? <Alert sx={{ width: 470 }} severity="success">{props.message} </Alert> : <p> </p>}
+
                 <Typography variant="button" > Looks like you dont have a business yet...Lets create one!</Typography >
                 <p> {saveMessage} </p>
                 <TextField required error={nameError} value={nameValue} onChange={(e) => setNameValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" placeholder='Business name'>  </TextField>
@@ -78,11 +80,12 @@ function CreateBusiness(props: { userInfo: any, setCreateMode: any, setCreateMes
                         <option value={''}> </option>
                         <option value={'Plumbing'}>Plumbing</option>
                         <option value={'Electric'}>Electric</option>
-                        <option value={'Carpentry'}>Carpentry</option>
+                        <option value={'Carpenter'}>Carpentry</option>
                         <option value={'Landscaping'}>Landscaping</option>
                         <option value={'Lawn Care'}>Lawn Care</option>
                         <option value={'Home Cleaning'}>Home Cleaning</option>
                         <option value={'Roofing'}>Roofing</option>
+                        <option value={'Handyman'}>Handyman</option>
                         <option value={'Masonry'}>Masonry</option>
                     </NativeSelect>
                 </FormControl>

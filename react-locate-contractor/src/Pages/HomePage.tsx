@@ -86,7 +86,7 @@ const HomePage = () => {
                 <Button onClick={() => SearchSpecialty("Carpenter")} sx={{ ml: 30, mt: 10 }} variant="outlined" >
                     <CarpenterIcon style={{ fontSize: 150 }}></CarpenterIcon>
                 </Button>
-                <Button onClick={() => SearchSpecialty("Lawncare")} sx={{ ml: 5, mt: 10 }} variant="outlined" >
+                <Button onClick={() => SearchSpecialty("Lawn Care")} sx={{ ml: 5, mt: 10 }} variant="outlined" >
                     <GrassIcon style={{ fontSize: 150 }}></GrassIcon>
                 </Button>
                 <Button onClick={() => SearchSpecialty("Handyman")} sx={{ ml: 5, mt: 10 }} variant="outlined" >

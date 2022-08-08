@@ -78,11 +78,12 @@ function CreateBusiness(props: { userInfo: any, setCreateMode: any, setCreateMes
                         <option value={''}> </option>
                         <option value={'Plumbing'}>Plumbing</option>
                         <option value={'Electric'}>Electric</option>
-                        <option value={'Carpentry'}>Carpentry</option>
+                        <option value={'Carpenter'}>Carpentry</option>
                         <option value={'Landscaping'}>Landscaping</option>
                         <option value={'Lawn Care'}>Lawn Care</option>
                         <option value={'Home Cleaning'}>Home Cleaning</option>
                         <option value={'Roofing'}>Roofing</option>
+                        <option value={'Handyman'}>Handyman</option>
                         <option value={'Masonry'}>Masonry</option>
                     </NativeSelect>
                 </FormControl>

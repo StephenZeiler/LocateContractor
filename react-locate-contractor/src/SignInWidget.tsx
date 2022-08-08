@@ -7,10 +7,10 @@ const SignInWidget = ({ config, onSuccess, onError }: { config: any, onSuccess: 
     const widgetRef = useRef<HTMLDivElement>(null);
     const newConfig = config;
 
-
     useAsyncEffect(async () => {
         if (widgetRef && widgetRef.current && !widgetRef.current) {
             return false;
+
         }
         if (newConfig && newConfig.widget) {
             const widget: any = new OktaSignIn(newConfig.widget);
@@ -22,6 +22,7 @@ const SignInWidget = ({ config, onSuccess, onError }: { config: any, onSuccess: 
                 el: widgetRef.current,
             }).then(onSuccess).catch(onError);
             return () => widget.remove();
+
         }
 
 

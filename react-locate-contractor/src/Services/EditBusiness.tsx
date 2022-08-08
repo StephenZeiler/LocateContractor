@@ -82,6 +82,7 @@ function EditBusinessData(props: { businessData: business }) {
                             <option value={'Lawn Care'}>Lawn Care</option>
                             <option value={'Home Cleaning'}>Home Cleaning</option>
                             <option value={'Roofing'}>Roofing</option>
+                            <option value={'Handyman'}>Handyman</option>
                             <option value={'Masonry'}>Masonry</option>
                         </NativeSelect>
                     </FormControl>

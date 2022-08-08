@@ -13,16 +13,17 @@ function GetBusinessData(props: { searchString: any }): JSX.Element {
     const [businessData, setBusinessData] = useState<business | null>(null)
     const [deleteMessage, setDeleteMessage] = useState('')
     const [createMessage, setCreateMessage] = useState('')
-    useEffect(() => {
-        getBusiness(props.searchString)
-            .then((res) => {
-                if (res && res.data) {
-                    const business = res.data[0]
-                    business && setBusinessData(business)
-                    setLoadingMode(false)
-                }
-            })
-    }, [])
+    const [message, setMessage] = useState('')
+
+    getBusiness(props.searchString)
+        .then((res) => {
+            if (res && res.data) {
+                const business = res.data[0]
+                business && setBusinessData(business)
+                setLoadingMode(false)
+            }
+        })
+
     useEffect(() => {
         if (!businessData && !createMode) {
             getBusiness(props.searchString)
@@ -42,12 +43,11 @@ function GetBusinessData(props: { searchString: any }): JSX.Element {
         deleteBusiness(props.searchString)
             .then((res) => {
                 if (res.status >= 300) {
-                    setDeleteMessage("ERROR: Business has not deleted")
-                    setCreateMessage('')
+                    setMessage("ERROR: Business has not deleted")
                 }
-                else {
-                    setDeleteMessage("You have succesfully deleted your business")
-                    setCreateMessage('')
+                else if (businessData) {
+                    setMessage("You have succesfully deleted your business")
+                    setBusinessData(null)
                 }
             }
             )
@@ -67,7 +67,7 @@ function GetBusinessData(props: { searchString: any }): JSX.Element {
                     :
                     <>
 
-                        {!createMode ? <Alert sx={{ width: 470 }} severity="success">{deleteMessage} {createMessage}</Alert> : <p> </p>}
+                        {!createMode ? <Alert sx={{ width: 470 }} severity="success">{message} </Alert> : <p> </p>}
                         <Button size="small" onClick={handleEditBusiness}>Edit</Button>
                         <Button size="small" onClick={handleDeleteBusiness}>Delete</Button>
                         {businessData && (businessData).businessName && <BusinessCard title="Business Name:" body={(businessData).businessName} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
@@ -84,7 +84,7 @@ function GetBusinessData(props: { searchString: any }): JSX.Element {
     else {
 
         return (
-            <CreateBusiness userInfo={props.searchString} setCreateMode={setCreateMode} setCreateMessage={setCreateMessage}></CreateBusiness>
+            <CreateBusiness userInfo={props.searchString} setCreateMode={setCreateMode} setMessage={setMessage} message={message}></CreateBusiness>
         );
     }
 }

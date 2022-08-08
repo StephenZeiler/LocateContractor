@@ -16,7 +16,6 @@ const Login = ({ config }: any) => {
         return <div>Loading ... </div>;
     }
 
-
     return authState.isAuthenticated ?
         <Navigate to={{ pathname: '/' }} /> :
         <SignInWidget config={config} onSuccess={onSuccess} onError={onError} />;

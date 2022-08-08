@@ -5,6 +5,7 @@ import { ReviewCard } from "./ReviewCard";
 import { review } from "./WriteReview";
 import Typography from '@mui/material/Typography';
 import business from "./BusinessCard";
+import { Box, LinearProgress } from "@mui/material";
 function ViewReview() {
     let { businessId } = useParams();
     const [reviewData, setReviewData] = useState<review[]>([])
@@ -39,7 +40,10 @@ function ViewReview() {
     if (loadingMode) {
         return (
             <div>
-
+                <Typography variant="h6">Loading Customer's Reviews...</Typography>
+                <Box sx={{ width: '100%' }}>
+                    <LinearProgress />
+                </Box>
             </div>
 
         );

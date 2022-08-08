@@ -3,7 +3,7 @@ import { business } from "../Pages/BusinessCard";
 import { deleteBusiness, getBusiness } from "./BusinessService"
 import BusinessCard from "../Pages/BusinessCard"
 import CreateBusiness from "../Pages/CreateBusiness";
-import { Alert, Button } from "@mui/material";
+import { Alert, Box, Button, LinearProgress, Typography } from "@mui/material";
 import EditBusinessData from "./EditBusiness";
 import { useNavigate } from "react-router-dom";
 function GetBusinessData(props: { searchString: any }): JSX.Element {
@@ -57,21 +57,26 @@ function GetBusinessData(props: { searchString: any }): JSX.Element {
 
     if (loadingMode) {
         return (
-            <div>Loading...</div>
+            <div>
+
+                <Typography variant="h6">Loading...</Typography>
+                <Box sx={{ width: '100%' }}>
+                    <LinearProgress />
+                </Box>
+            </div>
         )
     }
     else if (businessData && (businessData).businessName.length > 0) {
 
         const handleAllReviews = async () => navigate(`/AllReview/${businessData.userEmailId}`);
-
         return (
             < div >
                 {editMode ?
-                    <EditBusinessData businessData={businessData} />
+                    <EditBusinessData businessData={businessData} setEditMode={setEditMode} setMessage={setMessage} />
                     :
                     <>
 
-                        {!createMode ? <Alert sx={{ width: 470 }} severity="success">{message} </Alert> : <p> </p>}
+                        {message ? <Alert sx={{ width: 470 }} severity="success">{message} </Alert> : <p> </p>}
                         <Button size="small" onClick={handleEditBusiness}>Edit</Button>
                         <Button size="small" onClick={handleDeleteBusiness}>Delete</Button>
                         <Button size="small" onClick={handleAllReviews}>Customer Reviews</Button>

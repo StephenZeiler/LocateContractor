@@ -40,18 +40,13 @@ function GetBusinessData(props: { searchString: any }): JSX.Element {
     const handleEditBusiness = () => setEditMode(true);
     const handleDeleteBusiness = () => {
         setDeleteMode(false)
-        console.log(props.searchString)
         deleteBusiness(props.searchString)
             .then((res) => {
                 if (res.status >= 300) {
                     setMessage("ERROR: Business has not deleted")
-                    // setDeleteMessage("ERROR: Business has not deleted")
-                    // setCreateMessage('')
                 }
                 else if (businessData) {
                     setMessage("You have succesfully deleted your business")
-                    // setDeleteMessage("You have succesfully deleted your business")
-                    // setCreateMessage('')
                     setBusinessData(null)
                 }
             }

@@ -65,15 +65,14 @@ function GetBusinessData(props: { searchString: any }): JSX.Element {
         )
     }
     else if (businessData && (businessData).businessName.length > 0) {
-
         return (
             < div >
                 {editMode ?
-                    <EditBusinessData businessData={businessData} />
+                    <EditBusinessData businessData={businessData} setEditMode={setEditMode} setMessage={setMessage} />
                     :
                     <>
 
-                        {!createMode ? <Alert sx={{ width: 470 }} severity="success">{message} </Alert> : <p> </p>}
+                        {message ? <Alert sx={{ width: 470 }} severity="success">{message} </Alert> : <p> </p>}
                         <Button size="small" onClick={handleEditBusiness}>Edit</Button>
                         <Button size="small" onClick={handleDeleteBusiness}>Delete</Button>
                         {businessData && (businessData).businessName && <BusinessCard title="Business Name:" body={(businessData).businessName} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}

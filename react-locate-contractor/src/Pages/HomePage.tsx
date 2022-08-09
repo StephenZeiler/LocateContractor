@@ -19,12 +19,10 @@ const HomePage = () => {
     const [errorMssg, setErrorMssg] = useState<string>('')
     const [searchMode, setSearchMode] = useState(false)
     const [loadingMode, setLoadingMode] = useState(false)
-    console.log("mount")
     const search = () => {
         setLoadingMode(true)
         setSearchMode(true)
         setErrorState(false)
-        console.log("here")
         searchBusiness(searchString)
             .then((res) => {
                 const business: business[] = res.data
@@ -70,7 +68,6 @@ const HomePage = () => {
                 <InputBase
                     onChange={(e) => setSearchString(e.target.value)}
                     sx={{ ml: 1, flex: 1 }}
-
                     placeholder="Search Business"
                     type="text"
                     onKeyDown={(e) => {

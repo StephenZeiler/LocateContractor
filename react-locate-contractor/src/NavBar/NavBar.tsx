@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 import { useOktaAuth } from '@okta/okta-react';
 import { Typography, Box, AppBar, Toolbar, Button, IconButton } from '@mui/material';
-import PersonIcon from '@mui/icons-material/Person';
+import RateReviewIcon from '@mui/icons-material/RateReview';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import LoginIcon from '@mui/icons-material/Login';
 import HomeIcon from '@mui/icons-material/Home';
@@ -41,11 +41,11 @@ export function HomeButton() {
         <Button variant="contained" sx={{ ml: 10 }} onClick={handleHome}><HomeIcon />Home</Button>
     );
 }
-export function PersonalButton() {
+export function MyReviewsButton() {
     const navPersonal = useNavigate();
     const handlePersonal = async () => navPersonal('/personal');
     return (
-        <Button variant="contained" sx={{ ml: 20 }} onClick={handlePersonal}><PersonIcon />Personal</Button>
+        <Button variant="contained" sx={{ ml: 20 }} onClick={handlePersonal}><RateReviewIcon />My Reviews</Button>
     );
 
 }
@@ -55,7 +55,7 @@ export default function ButtonAppBar() {
             <AppBar position="static" >
                 <Toolbar>
                     <HomeButton />
-                    <PersonalButton />
+                    <MyReviewsButton />
                     <BusinessButton />
                     <LoginButton />
                 </Toolbar>

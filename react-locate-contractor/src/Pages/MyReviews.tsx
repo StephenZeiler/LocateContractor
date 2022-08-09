@@ -4,7 +4,7 @@ import { AuthMssg } from './BusinessPage';
 import { getMyReview } from '../Services/BusinessService';
 import { review } from './WriteReview';
 import { MyReviewCard } from './MyReviewCard';
-function PersonalPage() {
+function MyReviews() {
     const { authState, oktaAuth } = useOktaAuth();
     const [userInfo, setUserInfo]: [userInfo: any, setUserInfo: any] = useState(null);
     const [reviewData, setReviewData] = useState<any>()
@@ -60,4 +60,4 @@ function PersonalPage() {
     );
 };
 
-export default PersonalPage;
+export default MyReviews;

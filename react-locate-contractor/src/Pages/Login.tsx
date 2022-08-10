@@ -19,7 +19,6 @@ const Login = ({ config }: any) => {
     return authState.isAuthenticated ?
         <Navigate to={{ pathname: '/' }} /> :
         <SignInWidget config={config} onSuccess={onSuccess} onError={onError} />;
-
 };
 
 export default Login;

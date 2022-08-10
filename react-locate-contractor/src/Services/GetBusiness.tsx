@@ -16,15 +16,27 @@ function GetBusinessData(props: { searchString: any }): JSX.Element {
     const [deleteMessage, setDeleteMessage] = useState('')
     const [createMessage, setCreateMessage] = useState('')
     const [message, setMessage] = useState('')
+    const handleGetBusiness = () => {
+        getBusiness(props.searchString)
+            .then((res) => {
+                if (res && res.data) {
+                    const business = res.data[0]
+                    business && setBusinessData(business)
+                    setLoadingMode(false)
+                }
+            })
+    }
 
-    getBusiness(props.searchString)
-        .then((res) => {
-            if (res && res.data) {
-                const business = res.data[0]
-                business && setBusinessData(business)
-                setLoadingMode(false)
-            }
-        })
+    useEffect(() => {
+        getBusiness(props.searchString)
+            .then((res) => {
+                if (res && res.data) {
+                    const business = res.data[0]
+                    business && setBusinessData(business)
+                    setLoadingMode(false)
+                }
+            })
+    }, [])
 
     useEffect(() => {
         if (!businessData && !createMode) {
@@ -72,7 +84,7 @@ function GetBusinessData(props: { searchString: any }): JSX.Element {
         return (
             < div >
                 {editMode ?
-                    <EditBusinessData businessData={businessData} setEditMode={setEditMode} setMessage={setMessage} />
+                    <EditBusinessData businessData={businessData} setEditMode={setEditMode} setMessage={setMessage} handleGetBusiness={handleGetBusiness} />
                     :
                     <>
 

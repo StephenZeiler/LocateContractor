@@ -18,7 +18,7 @@ const userBusiness: business = {
     phoneContact: "",
     emailContact: ""
 }
-function EditBusinessData(props: { businessData: business, setMessage: any, setEditMode: any }) {
+function EditBusinessData(props: { businessData: business, setMessage: any, setEditMode: any, handleGetBusiness: () => void }) {
     const [nameValue, setNameValue] = useState(props.businessData.businessName)
     const [specialtyValue, setSpecialtyValue] = useState('')
     const [nameError, setNameError] = useState(false)
@@ -50,6 +50,7 @@ function EditBusinessData(props: { businessData: business, setMessage: any, setE
                         props.setMessage("ERROR: Your changes have not been saved!")
                     }
                     else {
+                        props.handleGetBusiness()
                         props.setMessage("Your changes have been saved!")
                         props.setEditMode(false)
                     }

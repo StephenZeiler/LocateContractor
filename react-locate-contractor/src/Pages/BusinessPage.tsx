@@ -22,7 +22,7 @@ function BusinessPage() {
             // When user isn't authenticated, forget any user info
             setUserInfo(null);
         } else {
-            oktaAuth.getUser().then((info: any) => {
+            !userInfo && oktaAuth.getUser().then((info: any) => {
                 setUserInfo(info);
             }).catch((err) => {
                 console.error(err);

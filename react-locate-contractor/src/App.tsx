@@ -1,6 +1,6 @@
 import HomePage from './Pages/HomePage';
 import BusinessPage from './Pages/BusinessPage';
-import PersonalPage from './Pages/PersonalPage';
+import MyReviews from './Pages/MyReviews';
 import './App.css';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { LoginCallback, Security } from '@okta/okta-react';
@@ -36,7 +36,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/Business" element={<BusinessPage />} />
-              <Route path="/Personal" element={<PersonalPage />} />
+              <Route path="/Personal" element={<MyReviews />} />
               <Route path="/login" element={<Login config={config} />} />
               <Route path="/login/callback" element={<LoginCallback />} />
               <Route path="/Review/:businessId" element={<WriteReview />} />

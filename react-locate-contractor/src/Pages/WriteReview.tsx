@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { business } from "./BusinessCard";
-import { TextField, Typography, NativeSelect, FormControl, InputLabel, Button, Box, Rating } from '@mui/material';
+import { TextField, Typography, NativeSelect, FormControl, InputLabel, Button, Box, Rating, Alert } from '@mui/material';
 import { postReview } from "../Services/BusinessService";
 import { useParams } from "react-router-dom";
 import { useOktaAuth } from '@okta/okta-react';
@@ -77,7 +77,7 @@ function WriteReview() {
     }
     return (
         <div>
-            <div>{saveMessage}</div>
+            {saveMessage ? <Alert sx={{ width: 470 }} severity="success">{saveMessage} </Alert> : <p> </p>}
             <form noValidate autoComplete='off' onSubmit={handleSubmit}>
                 <Typography variant="button"> Rate your service.</Typography >
                 <TextField required error={reviewError} value={reviewValue} onChange={(e) => setReviewValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" placeholder='Enter your review here...'>  </TextField>

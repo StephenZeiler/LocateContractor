@@ -3,7 +3,7 @@ import { business } from "../Pages/BusinessCard";
 import { deleteBusiness, getBusiness } from "./BusinessService"
 import BusinessCard from "../Pages/BusinessCard"
 import CreateBusiness from "../Pages/CreateBusiness";
-import { Alert, Box, Button, LinearProgress, Typography } from "@mui/material";
+import { Alert, Box, Button, Card, CardActions, CardContent, LinearProgress, Typography } from "@mui/material";
 import EditBusinessData from "./EditBusiness";
 import { useNavigate } from "react-router-dom";
 function GetBusinessData(props: { searchString: any }): JSX.Element {
@@ -94,7 +94,22 @@ function GetBusinessData(props: { searchString: any }): JSX.Element {
                         <Button size="small" onClick={handleAllReviews}>Customer Reviews</Button>
                         {businessData && (businessData).businessName && <BusinessCard title="Business Name:" body={(businessData).businessName} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
                         {businessData && (businessData).businessName && <BusinessCard title="Specialty:" body={(businessData).specialty} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
-                        {businessData && (businessData).businessName && <BusinessCard title="Hours of Operation::" body={(businessData).hoursOperation} cardWidth={500} cardHeight={140} actionHeight={0} > </BusinessCard>}
+                        <Card variant="outlined" sx={{ maxWidth: 500, height: 210 }} >
+                            <CardContent>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    Business Hours:
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">Monday: {businessData && businessData.monday}</Typography>
+                                <Typography variant="body2" color="text.secondary">Tuesday: {businessData && businessData.tuesday}</Typography>
+                                <Typography variant="body2" color="text.secondary">Wednesday: {businessData && businessData.wednesday}</Typography>
+                                <Typography variant="body2" color="text.secondary">Thursday: {businessData && businessData.thursday}</Typography>
+                                <Typography variant="body2" color="text.secondary">Friday: {businessData && businessData.friday}</Typography>
+                                <Typography variant="body2" color="text.secondary">Saturday: {businessData && businessData.saturday}</Typography>
+                                <Typography variant="body2" color="text.secondary">Sunday: {businessData && businessData.sunday}</Typography>
+                            </CardContent>
+                            <CardActions sx={{ height: 0 }}>
+                            </CardActions>
+                        </Card>
                         {businessData && (businessData).businessName && <BusinessCard title="Contact Information:" body={"Phone:" + (businessData).phoneContact + " " + "Email: " + (businessData).emailContact} cardWidth={500} cardHeight={160} actionHeight={0} > </BusinessCard>}
                         {businessData && (businessData).businessName && <BusinessCard title="Services:" body={(businessData).services} cardWidth={500} cardHeight={300} actionHeight={360} > </BusinessCard>}
                         {businessData && (businessData).businessName && <BusinessCard title="About:" body={(businessData).about} cardWidth={500} cardHeight={300} actionHeight={360} > </BusinessCard>}

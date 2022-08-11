@@ -5,11 +5,19 @@ export type business = {
     userEmailId: string,
     businessName: string,
     specialty: string,
-    hoursOperation: string,
     emailContact: string,
     phoneContact: string,
     services: string,
     about: string,
+    monday: string,
+    tuesday: string,
+    wednesday: string,
+    thursday: string,
+    friday: string,
+    saturday: string,
+    sunday: string,
+
+
 }
 
 const BusinessCard = (props: any) => {

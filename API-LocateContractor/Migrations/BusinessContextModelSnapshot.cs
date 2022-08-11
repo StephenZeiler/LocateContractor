@@ -38,11 +38,19 @@ namespace API_LocateContractor.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("HoursOperation")
+                    b.Property<string>("Friday")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Monday")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneContact")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Saturday")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -51,6 +59,22 @@ namespace API_LocateContractor.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Specialty")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sunday")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Thursday")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tuesday")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Wednesday")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

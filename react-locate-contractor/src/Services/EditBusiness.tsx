@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import TextField from '@mui/material/TextField';
-import { Typography, NativeSelect, FormControl, InputLabel, Button } from '@mui/material';
+import { Typography, NativeSelect, FormControl, InputLabel, Button, Box } from '@mui/material';
 import { business } from "../Pages/BusinessCard";
 import { getBusiness, putBusiness } from "../Services/BusinessService";
 import { useOktaAuth } from '@okta/okta-react';
 import { useOutletContext } from "react-router-dom";
 import { Status } from "@okta/okta-auth-js";
+import { TransgenderTwoTone } from "@mui/icons-material";
 
 
 const userBusiness: business = {
@@ -14,9 +15,15 @@ const userBusiness: business = {
     specialty: "",
     about: "",
     services: "",
-    hoursOperation: "",
     phoneContact: "",
-    emailContact: ""
+    emailContact: "",
+    monday: "",
+    tuesday: "",
+    wednesday: "",
+    thursday: "",
+    friday: "",
+    saturday: "",
+    sunday: "",
 }
 function EditBusinessData(props: { businessData: business, setMessage: any, setEditMode: any, handleGetBusiness: () => void }) {
     const [nameValue, setNameValue] = useState(props.businessData.businessName)
@@ -26,7 +33,13 @@ function EditBusinessData(props: { businessData: business, setMessage: any, setE
     const [aboutValue, setAboutValue] = useState(props.businessData.about)
     const [phoneValue, setPhoneValue] = useState(props.businessData.phoneContact)
     const [emailValue, setEmailValue] = useState(props.businessData.emailContact)
-    const [hoursValue, setHoursValue] = useState(props.businessData.hoursOperation)
+    const [mondayValue, setMondayValue] = useState('')
+    const [tuesdayValue, setTuesdayValue] = useState('')
+    const [wednesdayValue, setWednesdayValue] = useState('')
+    const [thursdayValue, setThursdayValue] = useState('')
+    const [fridayValue, setFridayValue] = useState('')
+    const [saturdayValue, setSaturdayValue] = useState('')
+    const [sundayValue, setSundayValue] = useState('')
     const [saveMessage, setSaveMessage] = useState('')
     const handleSubmit = (e: any) => {
         e.preventDefault()
@@ -41,9 +54,15 @@ function EditBusinessData(props: { businessData: business, setMessage: any, setE
             userBusiness.specialty = specialtyValue
             userBusiness.about = aboutValue
             userBusiness.services = servicesValue
-            userBusiness.hoursOperation = hoursValue
             userBusiness.phoneContact = phoneValue
             userBusiness.emailContact = emailValue
+            userBusiness.monday = mondayValue
+            userBusiness.tuesday = tuesdayValue
+            userBusiness.wednesday = wednesdayValue
+            userBusiness.thursday = thursdayValue
+            userBusiness.friday = fridayValue
+            userBusiness.saturday = saturdayValue
+            userBusiness.sunday = sundayValue
             putBusiness(userBusiness.userEmailId, userBusiness)
                 .then(res => {
                     if (res.status >= 300) {
@@ -92,7 +111,90 @@ function EditBusinessData(props: { businessData: business, setMessage: any, setE
                     <TextField label="About" value={aboutValue} onChange={(e) => setAboutValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" > </TextField>
                     <TextField label="Phone Number" value={phoneValue} onChange={(e) => setPhoneValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" > </TextField>
                     <TextField label="Business Email" value={emailValue} onChange={(e) => setEmailValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" > </TextField>
-                    <TextField label="Hours of Operation" value={hoursValue} onChange={(e) => setHoursValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" > </TextField>
+                    <Typography variant="button" >Add your businesses operating hours.</Typography >
+                    <div>
+                        <Box
+                            component="form"
+                            sx={{
+                                "& .MuiTextField-root": { m: 1, width: "25ch" }
+                            }}
+                            noValidate
+                            autoComplete="off"
+                        >
+                            <div>
+                                <TextField
+                                    onChange={(e) => setMondayValue(e.target.value)}
+                                    id="standard-textarea"
+                                    helperText="Monday"
+                                    placeholder="Ex) 0:00 - 0:00"
+                                    defaultValue={props.businessData.monday}
+                                    multiline
+                                    variant="standard"
+                                />
+                                <TextField
+                                    onChange={(e) => setTuesdayValue(e.target.value)}
+                                    id="standard-textarea"
+                                    helperText="Tuesday"
+                                    placeholder="Ex) 0:00 - 0:00"
+                                    defaultValue={props.businessData.tuesday}
+                                    multiline
+                                    variant="standard"
+                                />
+                            </div>
+                            <div>
+                                <TextField
+                                    onChange={(e) => setWednesdayValue(e.target.value)}
+                                    id="standard-textarea"
+                                    helperText="Wednesday"
+                                    placeholder="Ex) 0:00 - 0:00"
+                                    defaultValue={props.businessData.wednesday}
+                                    multiline
+                                    variant="standard"
+                                />
+                                <TextField
+                                    onChange={(e) => setThursdayValue(e.target.value)}
+                                    id="standard-textarea"
+                                    helperText="Thursday"
+                                    placeholder="Ex) 0:00 - 0:00"
+                                    defaultValue={props.businessData.thursday}
+                                    multiline
+                                    variant="standard"
+                                />
+                            </div>
+                            <div>
+                                <TextField
+                                    onChange={(e) => setFridayValue(e.target.value)}
+                                    id="standard-textarea"
+                                    placeholder="Ex) 0:00 - 0:00"
+                                    defaultValue={props.businessData.friday}
+                                    helperText="Friday"
+                                    variant="standard"
+                                    multiline
+
+                                />
+                                <TextField
+                                    onChange={(e) => setSaturdayValue(e.target.value)}
+                                    id="standard-textarea"
+                                    helperText="Saturday"
+                                    placeholder="Ex) 0:00 - 0:00"
+                                    defaultValue={props.businessData.friday}
+                                    multiline
+                                    variant="standard"
+                                />
+                            </div>
+                            <div>
+                                <TextField
+                                    onChange={(e) => setSundayValue(e.target.value)}
+                                    id="standard-textarea"
+                                    helperText="Sunday"
+                                    placeholder="Ex) 0:00 - 0:00"
+                                    defaultValue={props.businessData.sunday}
+                                    multiline
+                                    variant="standard"
+                                />
+                            </div>
+                        </Box>
+                    </div>
                     <Button onClick={() => console.log('you clicked me')} type="submit"> Save Changes </Button>
                 </form>
             </div>

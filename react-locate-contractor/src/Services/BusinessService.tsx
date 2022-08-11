@@ -24,11 +24,17 @@ export const postBusiness = async (userBusiness: business) => {
             userEmailId: userBusiness.userEmailId,
             businessName: userBusiness.businessName,
             specialty: userBusiness.specialty,
-            hoursOperation: userBusiness.hoursOperation,
             emailContact: userBusiness.emailContact,
             phoneContact: userBusiness.phoneContact,
             services: userBusiness.services,
             about: userBusiness.about,
+            monday: userBusiness.monday,
+            tuesday: userBusiness.tuesday,
+            wednesday: userBusiness.wednesday,
+            thursday: userBusiness.thursday,
+            friday: userBusiness.friday,
+            saturday: userBusiness.saturday,
+            sunday: userBusiness.sunday,
         })
     };
     return await fetch(`https://locatecontractorapi.azurewebsites.net/Business/`, requestOptions)
@@ -48,11 +54,18 @@ export const putBusiness = async (searchString: string, userBusiness: business) 
             userEmailId: userBusiness.userEmailId,
             businessName: userBusiness.businessName,
             specialty: userBusiness.specialty,
-            hoursOperation: userBusiness.hoursOperation,
             emailContact: userBusiness.emailContact,
             phoneContact: userBusiness.phoneContact,
             services: userBusiness.services,
             about: userBusiness.about,
+            monday: userBusiness.monday,
+            tuesday: userBusiness.tuesday,
+            wednesday: userBusiness.wednesday,
+            thursday: userBusiness.thursday,
+            friday: userBusiness.friday,
+            saturday: userBusiness.saturday,
+            sunday: userBusiness.sunday,
+
         })
     };
     return await fetch(`https://locatecontractorapi.azurewebsites.net/Business/${searchString}`, requestOptions)

@@ -13,7 +13,7 @@ export const ReviewCard = (props: { Review: review }) => {
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     {props && props.Review.name}
                 </Typography>
-                <Typography variant="h5" component="div">
+                <Typography variant="h6" component="div">
                     {props && props.Review.userReview}
                 </Typography>
                 <Typography sx={{}} color="text.secondary">

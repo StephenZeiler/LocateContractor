@@ -5,7 +5,7 @@ import { ReviewCard } from "./ReviewCard";
 import { review } from "./WriteReview";
 import Typography from '@mui/material/Typography';
 import business from "./BusinessCard";
-import { Box, LinearProgress } from "@mui/material";
+import { Box, Divider, LinearProgress } from "@mui/material";
 function ViewReview() {
     let { businessId } = useParams();
     const [reviewData, setReviewData] = useState<review[]>([])
@@ -56,6 +56,7 @@ function ViewReview() {
                 <Typography variant="h5">
                     Customer reviews for {businessData && businessData.businessName}
                 </Typography>
+                <Divider sx={{ mt: 2 }} variant="middle" />
                 {
                     reviewData.map((Review: review) => (
                         <ReviewCard Review={Review} />

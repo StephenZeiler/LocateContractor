@@ -15,9 +15,13 @@ export const SearchCard = (props: { Business: business }) => {
     const handleCreateReview = async () => navigate(`/Review/${props.Business.userEmailId}`);
     const handleAllReviews = async () => navigate(`/AllReview/${props.Business.userEmailId}`);
 
-    const [open, setOpen] = React.useState(true);
-    const handleClick = () => {
-        setOpen(!open);
+    const [openHours, setOpenHours] = React.useState(true);
+    const handleClickHours = () => {
+        setOpenHours(!openHours);
+    };
+    const [openAbout, setOpenAbout] = React.useState(true);
+    const handleClickAbout = () => {
+        setOpenAbout(!openAbout);
     };
 
     return (
@@ -40,11 +44,11 @@ export const SearchCard = (props: { Business: business }) => {
                 <Typography sx={{ ml: 2 }} variant="body2" color="text.secondary">
                     {"Email: "}{props && props.Business.emailContact}
                 </Typography>
-                <ListItemButton onClick={handleClick}>
+                <ListItemButton onClick={handleClickHours}>
                     <Typography color="text.secondary" > Business hours: </Typography>
-                    {open ? <ExpandLess /> : <ExpandMore />}
+                    {openHours ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
-                <Collapse in={open} timeout="auto" unmountOnExit>
+                <Collapse in={!openHours} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         <Typography sx={{ ml: 3 }} variant="body2"> Monday: {props.Business.monday}</Typography>
                         <Typography sx={{ ml: 3 }} variant="body2"> Tuesday: {props.Business.tuesday} </Typography>
@@ -53,6 +57,16 @@ export const SearchCard = (props: { Business: business }) => {
                         <Typography sx={{ ml: 3 }} variant="body2"> Friday: {props.Business.friday}</Typography>
                         <Typography sx={{ ml: 3 }} variant="body2"> Saturday: {props.Business.saturday}</Typography>
                         <Typography sx={{ ml: 3 }} variant="body2"> Sunday: {props.Business.sunday}</Typography>
+                    </List>
+                </Collapse>
+
+                <ListItemButton onClick={handleClickAbout}>
+                    <Typography color="text.secondary" > More info: </Typography>
+                    {openAbout ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+                <Collapse in={!openAbout} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        <Typography sx={{ ml: 3 }} variant="body2"> {props.Business.about}</Typography>
                     </List>
                 </Collapse>
             </CardContent>

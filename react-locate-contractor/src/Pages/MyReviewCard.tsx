@@ -22,13 +22,13 @@ export const MyReviewCard = (props: { Review: review }) => {
     return (
         <React.Fragment>
             <CardContent>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                <Typography variant="h5" sx={{ fontSize: 18 }} gutterBottom>
                     {businessData && businessData.businessName}
                 </Typography>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     {props && props.Review.name}
                 </Typography>
-                <Typography variant="h5" component="div">
+                <Typography variant="h6" component="div">
                     {props && props.Review.userReview}
                 </Typography>
                 <Typography sx={{}} color="text.secondary">

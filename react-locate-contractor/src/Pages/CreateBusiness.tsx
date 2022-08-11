@@ -120,7 +120,6 @@ function CreateBusiness(props: { userInfo: any, setCreateMode: any, setMessage: 
                 <TextField value={aboutValue} onChange={(e) => setAboutValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" placeholder='Tell customers about your business...'> </TextField>
                 <TextField value={phoneValue} onChange={(e) => setPhoneValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" placeholder='What is your business phone number?'> </TextField>
                 <TextField value={emailValue} onChange={(e) => setEmailValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" placeholder='What is your business email?'> </TextField>
-                {/* <TextField value={hoursValue} onChange={(e) => setHoursValue(e.target.value)} sx={{ mt: 2 }} fullWidth multiline minRows='4' variant="filled" placeholder='What hours does your business operate'> </TextField> */}
                 <Typography variant="button" >Add your businesses operating hours.</Typography >
                 <div>
                     <Box

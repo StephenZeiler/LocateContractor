@@ -4,6 +4,7 @@ import { AuthMssg } from './BusinessPage';
 import { getMyReview } from '../Services/BusinessService';
 import { review } from './WriteReview';
 import { MyReviewCard } from './MyReviewCard';
+import { Divider } from '@mui/material';
 function MyReviews() {
     const { authState, oktaAuth } = useOktaAuth();
     const [userInfo, setUserInfo]: [userInfo: any, setUserInfo: any] = useState(null);
@@ -50,6 +51,8 @@ function MyReviews() {
                     Welcome, &nbsp;{userInfo.name}!
                 </p>
                 My Reviews:
+                <Divider sx={{ mt: 2 }} variant="middle" />
+
                 {
                     reviewData && reviewData.map((Review: review) => (
                         <MyReviewCard Review={Review} />

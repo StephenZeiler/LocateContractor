@@ -6,13 +6,19 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Divider } from "@mui/material";
+import { Collapse, Divider, List, ListItemButton } from "@mui/material";
 import WriteReview from "./WriteReview";
 import { useNavigate } from "react-router-dom";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 export const SearchCard = (props: { Business: business }) => {
     const navigate = useNavigate();
     const handleCreateReview = async () => navigate(`/Review/${props.Business.userEmailId}`);
     const handleAllReviews = async () => navigate(`/AllReview/${props.Business.userEmailId}`);
+
+    const [open, setOpen] = React.useState(true);
+    const handleClick = () => {
+        setOpen(!open);
+    };
 
     return (
         <React.Fragment>
@@ -23,17 +29,32 @@ export const SearchCard = (props: { Business: business }) => {
                 <Typography variant="h5" component="div">
                     {props && props.Business.businessName}
                 </Typography>
-                <Typography sx={{}} color="text.secondary">
-                    {"Phone: "}{props && props.Business.phoneContact}
-                </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {"Email: "}{props && props.Business.emailContact}
-                </Typography>
-                <Typography variant="body2">
-                    {"Business Hours: "}{props && props.Business.hoursOperation}
-                    <br />
+
+                <Typography sx={{ mt: 1, ml: 2 }} >
+
                     {"Services Offered: "}{props.Business.services}
                 </Typography>
+                <Typography sx={{ ml: 2 }} variant="body2" color="text.secondary">
+                    {"Phone: "}{props && props.Business.phoneContact}
+                </Typography>
+                <Typography sx={{ ml: 2 }} variant="body2" color="text.secondary">
+                    {"Email: "}{props && props.Business.emailContact}
+                </Typography>
+                <ListItemButton onClick={handleClick}>
+                    <Typography color="text.secondary" > Business hours: </Typography>
+                    {open ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        <Typography sx={{ ml: 3 }} variant="body2"> Monday: {props.Business.monday}</Typography>
+                        <Typography sx={{ ml: 3 }} variant="body2"> Tuesday: {props.Business.tuesday} </Typography>
+                        <Typography sx={{ ml: 3 }} variant="body2"> Wednesday: {props.Business.wednesday} </Typography>
+                        <Typography sx={{ ml: 3 }} variant="body2"> Thursday: {props.Business.thursday}</Typography>
+                        <Typography sx={{ ml: 3 }} variant="body2"> Friday: {props.Business.friday}</Typography>
+                        <Typography sx={{ ml: 3 }} variant="body2"> Saturday: {props.Business.saturday}</Typography>
+                        <Typography sx={{ ml: 3 }} variant="body2"> Sunday: {props.Business.sunday}</Typography>
+                    </List>
+                </Collapse>
             </CardContent>
             <CardActions>
                 {props && <Button onClick={handleAllReviews} size="small">See Reviews</Button>}
@@ -42,4 +63,5 @@ export const SearchCard = (props: { Business: business }) => {
             <Divider variant="middle" />
         </React.Fragment>
     );
+
 }

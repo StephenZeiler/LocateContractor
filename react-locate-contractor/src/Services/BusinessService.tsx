@@ -5,14 +5,14 @@ import { Business } from "@mui/icons-material";
 import { review } from "../Pages/WriteReview";
 
 export const getBusiness = async (searchString: string) => {
-    return await (await axios.get(`https://locatecontractorapi.azurewebsites.net/Business/email/${searchString}`));
+    return await (await axios.get(`http://localhost:5149/Business/email/${searchString}`));
 }
 
 export const searchBusiness = async (searchString: string) => {
-    return await (await axios.get(`https://locatecontractorapi.azurewebsites.net/Business/search/${searchString}`));
+    return await (await axios.get(`http://localhost:5149/Business/search/${searchString}`));
 }
 export const getSpecialty = async (searchString: string) => {
-    return await (await axios.get(`https://locatecontractorapi.azurewebsites.net/Business/specialty/${searchString}`));
+    return await (await axios.get(`http://localhost:5149/Business/specialty/${searchString}`));
 }
 
 export const postBusiness = async (userBusiness: business) => {
@@ -24,21 +24,27 @@ export const postBusiness = async (userBusiness: business) => {
             userEmailId: userBusiness.userEmailId,
             businessName: userBusiness.businessName,
             specialty: userBusiness.specialty,
-            hoursOperation: userBusiness.hoursOperation,
             emailContact: userBusiness.emailContact,
             phoneContact: userBusiness.phoneContact,
             services: userBusiness.services,
             about: userBusiness.about,
+            monday: userBusiness.monday,
+            tuesday: userBusiness.tuesday,
+            wednesday: userBusiness.wednesday,
+            thursday: userBusiness.thursday,
+            friday: userBusiness.friday,
+            saturday: userBusiness.saturday,
+            sunday: userBusiness.sunday,
         })
     };
-    return await fetch(`https://locatecontractorapi.azurewebsites.net/Business/`, requestOptions)
+    return await fetch(`http://localhost:5149/Business/`, requestOptions)
 }
 export const deleteBusiness = async (searchString: string) => {
     const requestOptions = {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     };
-    return await fetch(`https://locatecontractorapi.azurewebsites.net/Business/${searchString}`, requestOptions)
+    return await fetch(`http://localhost:5149/Business/${searchString}`, requestOptions)
 }
 export const putBusiness = async (searchString: string, userBusiness: business) => {
     const requestOptions = {
@@ -48,14 +54,21 @@ export const putBusiness = async (searchString: string, userBusiness: business) 
             userEmailId: userBusiness.userEmailId,
             businessName: userBusiness.businessName,
             specialty: userBusiness.specialty,
-            hoursOperation: userBusiness.hoursOperation,
             emailContact: userBusiness.emailContact,
             phoneContact: userBusiness.phoneContact,
             services: userBusiness.services,
             about: userBusiness.about,
+            monday: userBusiness.monday,
+            tuesday: userBusiness.tuesday,
+            wednesday: userBusiness.wednesday,
+            thursday: userBusiness.thursday,
+            friday: userBusiness.friday,
+            saturday: userBusiness.saturday,
+            sunday: userBusiness.sunday,
+
         })
     };
-    return await fetch(`https://locatecontractorapi.azurewebsites.net/Business/${searchString}`, requestOptions)
+    return await fetch(`http://localhost:5149/Business/${searchString}`, requestOptions)
 
 }
 
@@ -72,11 +85,11 @@ export const postReview = async (Review: review) => {
             businessEmail: Review.businessEmail
         })
     };
-    return await fetch(`https://locatecontractorapi.azurewebsites.net/Review/`, requestOptions)
+    return await fetch(`http://localhost:5149/Review/`, requestOptions)
 }
 export const getBusinessReview = async (searchString: string) => {
-    return await (await axios.get(`https://locatecontractorapi.azurewebsites.net/Review/BusinessReview/${searchString}`));
+    return await (await axios.get(`http://localhost:5149/Review/BusinessReview/${searchString}`));
 }
 export const getMyReview = async (searchString: string) => {
-    return await (await axios.get(`https://locatecontractorapi.azurewebsites.net/Review/MyReview/${searchString}`));
+    return await (await axios.get(`http://localhost:5149/Review/MyReview/${searchString}`));
 }

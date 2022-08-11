@@ -15,11 +15,17 @@ namespace API_LocateContractor.Migrations
                     UserEmailId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     BusinessName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Specialty = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HoursOperation = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EmailContact = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneContact = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Services = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    About = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    About = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Monday = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Tuesday = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Wednesday = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Thursday = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Friday = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Saturday = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Sunday = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

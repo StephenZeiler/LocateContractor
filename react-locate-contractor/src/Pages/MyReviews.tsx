@@ -40,7 +40,7 @@ function MyReviews() {
 
     if (!userInfo) {
         return (
-            <AuthMssg page="personal"> </AuthMssg>
+            <AuthMssg page="reviews"> </AuthMssg>
         );
     }
 

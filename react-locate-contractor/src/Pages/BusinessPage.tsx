@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
-import { Typography, Container } from '@mui/material';
+import { Typography, Container, Alert, AlertTitle } from '@mui/material';
 import GetBusinessData from '../Services/GetBusiness';
 
 export const AuthMssg = (pageName: any) => {
     return (
         <div>
-            <p>Uh oh, you are not logged in! To access the {pageName.page} page you must be logged in...</p>
+            <Alert severity="error" sx={{ mt: 3 }}>
+                <AlertTitle>Error</AlertTitle>
+                <strong>Login Failure - </strong> You must be logged in for access to your {pageName.page}.
+            </Alert>
         </div>
     );
 }
